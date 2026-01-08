@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+title: Code of Conduct
+sidebar_position: 16
 ---
 
 # Code of Conduct
@@ -47,3 +48,4 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 ### Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 1.4, available at [https://www.contributor-covenant.org/version/1/4/code-of-conduct.html](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html)
+

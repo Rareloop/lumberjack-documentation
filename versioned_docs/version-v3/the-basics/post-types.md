@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+title: Post Types
+sidebar_position: 6
 ---
 
 # Post Types
@@ -62,8 +63,6 @@ class Product extends Post
 }
 ```
 
-_If collections are new to you, be sure the check out the [Collections documentation](collections)._
-
 ## Register Custom Post Types
 
 First, create a new file in `app/PostTypes/`. We recommend using singular names. For this example, lets add a `Product.php` file there.
@@ -110,7 +109,7 @@ class Product extends Post
 }
 ```
 
-Lumberjack will handle the registering of the post type for you. In order to do that, it requires 2 methods (documented above):
+Lumberjack will handle the registering of the post type for you. In order to do that, it requires 2 methods \(documented above\):
 
 * `getPostType()`
 * `getPostTypeConfig()`
@@ -160,19 +159,3 @@ $posts = Post::all(10, 'title', 'asc');
 $products = Product::query(['s' => 'Toy Car']);
 ```
 
-## Extending Post Types
-
-The Lumberjack `Post` class can be extended with custom functionality at runtime (the class is "macroable"). The following example adds an `acf` method to the `Post` class that can be used to access Advanced Custom Field (ACF) field values:
-
-```php
-use Rareloop\Lumberjack\Post;
-
-// Add custom function
-Post::macro('acf', function ($field) {
-    return get_field($field, $this->id);
-});
-
-// Use the functionality
-$post = new Post;
-$value = $post->acf('custom_field_name');
-```

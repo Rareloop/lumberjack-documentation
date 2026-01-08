@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+title: Notable Mentions
+sidebar_position: 15
 ---
 
 # Notable Mentions

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+title: Lifecycle
+sidebar_position: 5
 ---
 
 # Lifecycle
@@ -37,25 +38,22 @@ Service providers are fundamental to bootstrapping the rest of the framework and
 
 By having them defined in your theme, you can remove or modify any of the core behaviour. Do this with caution though. This also means you can add your own service providers too and power up Lumberjack in your own way!
 
-Lumberjack loops through this array twice. The first time it calls the `register()` method on all of the service providers. Then after they are all register it calls the `boot()` method on each one. You can read more about service providers here:
-
-For more information, see the [Service Providers documentation](../container/service-providers).
+Lumberjack loops through this array twice. The first time it calls the `register()` method on all of the service providers. Then after they are all register it calls the `boot()` method on each one. You can **read more about service providers here** \*Todo\*.
 
 ## Processing The Request
 
-The first service provider that runs is quite a fundamental one. The `RouterServiceProvider` has 2 important roles, which both trigger when WordPress had finished instantiating all plugins and the theme (during the [`wp_loaded` action](https://codex.wordpress.org/Plugin_API/Action_Reference/wp_loaded)).
+The first service provider that runs is quite a fundamental one. The `RouterServiceProvider` has 2 important roles, which both trigger when WordPress had finished instantiating all plugins and the theme \(during the [`wp_loaded` action](https://codex.wordpress.org/Plugin_API/Action_Reference/wp_loaded)\).
 
-First, it transforms the HTTP request into a PSR7 compliant `ServerRequest` object. Read more about what that means here:
+First, it transforms the HTTP request into a PSR7 compliant `ServerRequest` object. **Read more about what that means here** \*Todo\*
 
-For more information, see the [HTTP Requests documentation](http-requests).
-
-Next, it checks to see if any custom routes (from your theme's `routes.php` file) match the current URL. If it find a match, the request is handled and a response is returned. Otherwise the request carries on and gets handled by WordPress normally later.
+Next, it checks to see if any custom routes \(from your theme's `routes.php` file\) match the current URL. If it find a match, the request is handled and a response is returned. Otherwise the request carries on and gets handled by WordPress normally later.
 
 **That means any custom routes will always supersede any WordPress content with the same URL.**
 
 ### WordPress routes
 
-Lumberjack doesn't interfere with how WordPress handles the request or how it decides which template to load (via the template hierarchy).
+Lumberjack doesn't interfere with how WordPress handles the request or how it decides which template to load \(via the template hierarchy\).
 
-`WordPressControllersServiceProvider` does however tweak the behaviour around _how_ the template is included. It hooks into `template_include` to check if the file has a controller class with the correct name. If it finds one, it calls the `handle()` method. Otherwise that file is treated as per normal.
+`WordPressControllersServiceProvider` does however tweak the behaviour around _how_ the template is included. It hooks into `template_include` to check if the file has a controller class with the correct name. If it finds one, it calls the `handle()` method. Otherwise that file is treated as per normal.  
 This means that you don't have to use controllers if you don't want to.
+

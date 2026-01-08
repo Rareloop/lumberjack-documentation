@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+title: Service Providers
+sidebar_position: 11
 ---
 
 # Service Providers
@@ -22,7 +23,7 @@ This file must extend `Rareloop\Lumberjack\Providers\ServiceProvider`. This give
 
 The `register` method should only be used to bind things to the container. You cannot rely on Lumberjack registering service providers in any order, so you should always assume no other provider had been registered.
 
-You should not attempt to do anything other than binding things to the container in `register`. Do not try and add WordPress filters/actions, register routes, configure WordPress etc here. This is to prevent you from accidentally using a service provider which has not been loaded yet.
+You should not attempt to do anything other than binding things to the container in \`register\`. Do not try and add WordPress filters/actions, register routes, configure WordPress etc here. This is to prevent you from accidentally using a service provider which has not been loaded yet.
 
 ```php
 namespace App\Providers;
@@ -33,7 +34,7 @@ class PaymentGatewayProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('\App\PaymentGateway', '\App\StripePaymentGateway');
+        $this->app->set('\App\PaymentGateway', '\App\StripePaymentGateway');
     }
 }
 ```
@@ -42,17 +43,16 @@ Now, whenever we need to use a payment gateway in our application we can resolve
 
 #### Binding to the container
 
-There are a number of different ways to bind things to the container. Head over to ['Using the Container'](using-the-container) for more information.
+There are a number of different ways to bind things to the container. Head over to ['Using the Container'](using-the-container.md) for more information.
 
 ### Boot
 
-Once all service providers have been registered, Lumberjack then attempts to call the `boot` method on each one. This means that you have access to everything that has been bound to the container and can access it using [dependency injection](using-the-container#dependency-injection) on the `boot` method.
+Once all service providers have been registered, Lumberjack then attempts to call the `boot` method on each one. This means that you have access to everything that has been bound to the container and can access it using [dependency injection ](using-the-container.md#dependency-injection)on the `boot` method.
 
 ```php
 namespace App\Providers;
 
 use Rareloop\Lumberjack\Providers\ServiceProvider;
-use Rareloop\Lumberjack\Config;
 
 /**
  * Add Option Pages to WP using the config, using ACF

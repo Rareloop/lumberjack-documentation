@@ -75,24 +75,42 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'Lumberjack',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          type: 'docsVersionDropdown',
           position: 'left',
-          label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          type: 'docSidebar',
+          sidebarId: 'sidebar',
+          position: 'left',
+          label: 'Documentation',
+        },
+        {
+          href: 'https://lumberjack.rareloop.com/',
+          label: 'Website',
           position: 'right',
         },
+        {
+          href: 'https://www.rareloop.com/',
+          label: 'Rareloop',
+          position: 'right',
+        },
+        {
+          href: 'https://timber.github.io/docs/v2/',
+          label: 'Timber Docs',
+          position: 'right',
+        },
+        {
+          href: 'https://twig.symfony.com/doc/2.x/',
+          label: 'Twig Docs',
+          position: 'right',
+        }
       ],
     },
     footer: {

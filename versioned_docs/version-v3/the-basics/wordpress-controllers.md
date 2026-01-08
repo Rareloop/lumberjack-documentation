@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+title: WordPress Controllers
+sidebar_position: 7
 ---
 
 # WordPress Controllers
@@ -57,7 +58,7 @@ Or if you wish to change the namespace you can use the `lumberjack_controller_na
 ```php
 add_filter('lumberjack_controller_namespace', function ($controllerName) {
     // e.g. Look for 'MyApp\PageHomeController' instead of 'App\PageHomeController'
-    return 'MyApp\\';
+    return 'MyApp\\'
 });
 ```
 
@@ -66,5 +67,3 @@ add_filter('lumberjack_controller_namespace', function ($controllerName) {
 In WordPress, you have a `404.php` file. `PHP` Classes cannot start with a number so following the usual naming convention will not work here.
 
 Instead Lumberjack will look for a controller called `Error404Controller`
-
-```

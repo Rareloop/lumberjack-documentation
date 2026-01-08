@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+title: Contributing
+sidebar_position: 14
 ---
 
 # Contributing
@@ -19,11 +20,5 @@ We accept contributions via Pull Requests on [Github](https://github.com/Rareloo
 ## Running Tests
 
 ```bash
-$ vendor/bin/phpunit
-```
-
-## Linting against PSR2 Coding Standards
-
-```bash
-$ vendor/bin/phpcs --standard=PSR2 ./src
+$ phpunit
 ```
