@@ -1,13 +1,13 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: "Lumberjack",
+  tagline: "Supercharge your WordPress Development",
+  favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,54 +15,40 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: "https://docs.lumberjack.rareloop.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: "rareloop", // Usually your GitHub org/user name.
+  projectName: "lumberjack", // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+            "https://github.com/rareloop/lumberjack/tree/main/packages/create-docusaurus/templates/shared/",
+          routeBasePath: "/",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -70,93 +56,113 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/docusaurus-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Lumberjack',
+      title: "Lumberjack",
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: "Lumberjack",
+        src: "img/logo.svg",
       },
       items: [
         {
-          type: 'docsVersionDropdown',
-          position: 'left',
+          type: "docsVersionDropdown",
+          position: "left",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'sidebar',
-          position: 'left',
-          label: 'Documentation',
+          type: "docSidebar",
+          sidebarId: "sidebar",
+          position: "left",
+          label: "Documentation",
         },
         {
-          href: 'https://lumberjack.rareloop.com/',
-          label: 'Website',
-          position: 'right',
+          href: "https://lumberjack.rareloop.com/",
+          label: "Website",
+          position: "right",
         },
         {
-          href: 'https://www.rareloop.com/',
-          label: 'Rareloop',
-          position: 'right',
+          href: "https://www.rareloop.com/",
+          label: "Rareloop",
+          position: "right",
         },
         {
-          href: 'https://timber.github.io/docs/v2/',
-          label: 'Timber Docs',
-          position: 'right',
+          href: "https://timber.github.io/docs/v2/",
+          label: "Timber Docs",
+          position: "right",
         },
         {
-          href: 'https://twig.symfony.com/doc/2.x/',
-          label: 'Twig Docs',
-          position: 'right',
-        }
+          href: "https://twig.symfony.com/doc/2.x/",
+          label: "Twig Docs",
+          position: "right",
+        },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: "Introduction",
+              to: "/docs",
+            },
+            {
+              label: "Installation",
+              to: "/docs/getting-started/installation",
+            },
+            {
+              label: "The Basics",
+              to: "/docs/the-basics/lifecycle",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: "GitHub",
+              href: "https://github.com/rareloop/lumberjack",
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: "X (Twitter)",
+              href: "https://x.com/rareloop",
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/company/rareloop",
+            },
+            {
+              label: "Rareloop Website",
+              href: "https://www.rareloop.com/",
             },
           ],
         },
         {
-          title: 'More',
+          title: "Resources",
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: "Timber Documentation",
+              href: "https://timber.github.io/docs/",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: "Twig Documentation",
+              href: "https://twig.symfony.com/",
+            },
+            {
+              label: "Bedrock",
+              href: "https://roots.io/bedrock/",
+            },
+            {
+              label: "Submit an Issue",
+              href: "https://github.com/rareloop/lumberjack/issues",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © 2011 - ${new Date().getFullYear()} Rareloop Limited. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
