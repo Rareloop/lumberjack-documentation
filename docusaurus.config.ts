@@ -111,15 +111,15 @@ const config: Config = {
           items: [
             {
               label: "Introduction",
-              to: "/docs",
+              to: "/",
             },
             {
               label: "Installation",
-              to: "/docs/getting-started/installation",
+              to: "/getting-started/installation",
             },
             {
               label: "The Basics",
-              to: "/docs/the-basics/lifecycle",
+              to: "/the-basics/lifecycle",
             },
           ],
         },

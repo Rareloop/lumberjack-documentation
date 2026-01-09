@@ -271,7 +271,7 @@ $commentB = app('comment'); // Creates a new instance of Comment
 $commentB->author; // Throws an error, undefined property!
 ```
 
-However, you also get the added benefit of being able to inject dependencies into your classes `__construct()` method. See ["Retrieving entries from the container"](using-the-container#retrieving-entries-from-the-container) for more information on this.
+However, you also get the added benefit of being able to inject dependencies into your classes `__construct()` method. See ["Resolving entries from the container"](using-the-container#resolving-entries-from-the-container) for more information on this.
 
 Singletons work in the same way with class names as they do with closures. When you bind using `singleton()`, the same class instance is always resolved, and therefore its state is maintained.
 

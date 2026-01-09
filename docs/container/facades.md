@@ -69,7 +69,7 @@ Config::set('app.debug', false);
 $value = Config::get('app.debug');
 ```
 
-Config is also available as a [Helper](https://docs.lumberjack.rareloop.com/the-basics/helpers#config)
+Config is also available as a [Helper](/the-basics/helpers#config)
 
 #### Log
 
@@ -93,7 +93,7 @@ Router::get('posts/all', function () {})->name('posts.index');
 $url = Router::url('posts.index');
 ```
 
-See [Creating Routes](https://docs.lumberjack.rareloop.com/the-basics/routing#creating-routes) for more information.
+See [Creating Routes](/the-basics/routing#creating-routes) for more information.
 
 #### Session
 
@@ -107,4 +107,4 @@ Session::put('name', 'Chris');
 $name = Session::get('name');
 ```
 
-Session is also available as a [Helper](https://docs.lumberjack.rareloop.com/the-basics/helpers#session)
+Session is also available as a [Helper](/the-basics/helpers#session)
