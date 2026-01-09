@@ -54,6 +54,9 @@ const config: Config = {
     ],
   ],
 
+  trailingSlash: false,
+  deploymentBranch: "gh-pages",
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
@@ -163,7 +166,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © 2011 - ${new Date().getFullYear()} Rareloop Limited. Built with Docusaurus.`,
+      copyright: `Copyright © 2015 - ${new Date().getFullYear()} Rareloop Limited. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
