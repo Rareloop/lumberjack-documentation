@@ -23,7 +23,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "rareloop", // Usually your GitHub org/user name.
-  projectName: "lumberjack", // Usually your repo name.
+  projectName: "lumberjack-documentation", // Usually your repo name.
 
   onBrokenLinks: "throw",
 
@@ -44,7 +44,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/rareloop/lumberjack/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/rareloop/lumberjack-documentation/tree/main/packages/create-docusaurus/templates/shared/",
           routeBasePath: "/",
         },
         theme: {
