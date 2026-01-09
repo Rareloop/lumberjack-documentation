@@ -58,7 +58,9 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
+      disableSwitch: true,
+      defaultMode: "light",
     },
     navbar: {
       title: "Lumberjack",
@@ -100,7 +102,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "Docs",
