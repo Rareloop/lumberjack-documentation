@@ -6,6 +6,121 @@ sidebar_position: 3
 
 # Upgrade Guide
 
+## Upgrading from v7 to v8
+
+Estimated time for upgrade: 5 minutes
+
+### Minimum PHP version increased to PHP 8.1
+
+:::warning
+**Likelihood of impact: Medium**
+:::
+
+As part of this upgrade we have increased the minimum version of PHP we support to PHP 8.1.
+
+### PHP 8.4 Support
+
+With Lumberjack v8 comes support for PHP 8.4. Please note that WordPress still only has "beta support" for this version of PHP, which means that several plugins still output errors or deprecation warnings.
+
+Please carefully review your site to see if it's able to run PHP 8.4 and you will need to do your own migration to this version of PHP for your theme and upgrade any composer dependencies you are using where appropriate too.
+
+[PHP: Migrating from PHP 8.3.x to PHP 8.4.x - Manual](https://www.php.net/manual/en/migration84.php)
+
+### Update composer dependencies
+
+You will need to update the following packages in your `composer.json` file:
+
+- `rareloop/lumberjack-core` to `^8.0`
+
+### Namespace changes
+
+In order to support PHP 8.4 we had to upgrade a number of packages, and also bring some outdated packages into core. With this comes some namespace changes.
+
+#### Laminas Zend Framework Bridge removed
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+Any imports that **start with** `Zend\Diactoros` must be **re-written to** `Laminas\Diactoros` .
+
+**For example:**
+
+```diff
+- use Zend\Diactoros\Response\JsonResponse;
++ use Laminas\Diactoros\Response\JsonResponse;
+```
+
+#### blast/facades package added to core
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+All Blast namespaces will need to be modified as follows:
+
+```diff
+- use Blast\Facades\AbstractFacade;
++ use Rareloop\Lumberjack\Facades\AbstractFacade;
+```
+
+```diff
+- use Blast\Facades\FacadeFactory;
++ use Rareloop\Lumberjack\FacadeFactory;
+```
+
+#### Encryption package added to core
+
+:::warning
+**Likelihood of impact: Low**
+:::
+
+The dcrypt package we were using has been brought into core. It's unlikely you are using this in your site, but if you are you will need to change `Dcrypt\` to `Rareloop\Lumberjack\Dcrypt\`.
+
+**For example:**
+
+```diff
+- use Dcrypt\AesCbc
++ use Rareloop\Lumberjack\Dcrypt\AesCbc;
+```
+
+### Logging
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+Lumberjack uses Monolog for its logging under the hood and as part of this release we upgraded the version of Monolog.
+
+You will need to update any instances of `Monolog\Logger` in your application like so:
+
+```diff
+'logs' => [
+    'enabled' => true,
+    'path' => false,
+-    'level' => Monolog\Logger::ERROR,
++    'level' => Monolog\Level::Error,
+],
+```
+
+### Illuminate packages
+
+:::warning
+**Likelihood of impact: Medium**
+:::
+
+We've upgraded `illuminate/*` packages to `10.x` - if your site depends on any they will also need to be upgraded to version 10.
+
+### Ignition
+
+:::warning
+**Likelihood of impact: Low**
+:::
+
+We've moved away from `symfony/debug` in favour of `spatie/ignition` to give you a much nicer error page. This should not impact anything in your website and you do not need to make any changes.
+
+[Ignition - Laravel Error Page](https://flareapp.io/ignition)
+
 ## Upgrading from v6 to v7
 
 Lumberjack v7 introduces Timber v2, which is likely to require broad changes. Generally speaking, we recommend following the [Timber v1 - v2 upgrade before](https://timber.github.io/docs/v2/upgrade-guides/2.0/) commencing this upgrade.
@@ -14,7 +129,7 @@ Lumberjack v7 introduces Timber v2, which is likely to require broad changes. Ge
 When upgrading to v7, you'll likely have lots of old, unused `use` statements that should be removed
 :::
 
-## Hatchet deprecated
+### Hatchet deprecated
 
 :::warning
 **Likelihood of impact: Low**
@@ -29,9 +144,9 @@ If you're using Hatchet, our now-deprecated CLI tool, it should be removed
 
 If any commands exist, they should be converted to use WP\_CLI.
 
-## Timber-related changes
+### Timber-related changes
 
-### Class maps
+#### Class maps
 
 :::warning
 **Likelihood of impact: High**
@@ -69,7 +184,7 @@ class AppServiceProvider extends ServiceProvider {
 }
 ```
 
-### Images
+#### Images
 
 :::warning
 **Likelihood of impact: High**
@@ -82,7 +197,7 @@ We found the Timber v2 upgrade documentation didn't make this clear, but instant
 +$image = Timber::get_image($data);
 ```
 
-### Update Menu.php
+#### Update Menu.php
 
 :::warning
 **Likelihood of impact: High**
@@ -104,7 +219,7 @@ class Menu extends TimberMenu
 }
 ```
 
-### Update Item.php
+#### Update Item.php
 
 :::warning
 **Likelihood of impact: High**
@@ -135,7 +250,7 @@ class Item extends TimberMenuItem
 Timber has changed how it serialises menu items, meaning that any `title` keys may not be available in your template. We recommend renaming them to `label`.
 :::
 
-### Register Menu and Item classes in AppServiceProvider
+#### Register Menu and Item classes in AppServiceProvider
 
 Similarly to the class map change, the Menu and Menu Item classes should be registered:
 
@@ -150,7 +265,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-### empty() and ArrayObject
+#### empty() and ArrayObject
 
 :::warning
 **Likelihood of impact: Medium**
