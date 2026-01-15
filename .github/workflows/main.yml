@@ -12,40 +12,22 @@ concurrency:
 
 jobs:
   lint:
-    name: lint
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24.11.1
-          cache: "npm"
-      - name: install dependencies
-        run: npm ci
-      - name: eslint
-        run: npm run lint
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/node
+      - run: npm run lint
 
   build:
-    name: "build"
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24.11.1
-          cache: "npm"
-      - name: install dependencies
-        run: npm ci
-      - name: check TypeScript
-        run: npm run typecheck
-      - name: build
-        run: npm run build
-      - name: upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/node
+      - run: npm run typecheck
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           name: docusaurus-build
@@ -53,7 +35,7 @@ jobs:
           retention-days: 1
 
   deploy:
-    name: "deploy"
+    name: Deploy
     needs: [lint, build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -64,8 +46,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: deploy production
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
         with:
           artifact_name: docusaurus-build
