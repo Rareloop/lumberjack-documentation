@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Lumberjack is a powerful MVC framework for the modern WordPress developer. Write better, more expressive and easier to maintain code.
 
-### Who is Lumberjack for?
+### Who is Lumberjack for? Me
 
 Coming from another PHP framework such as Laravel, have experience using Timber with WordPress but want more, or are just getting started with modern WordPress? Then Lumberjack is for you.
 
