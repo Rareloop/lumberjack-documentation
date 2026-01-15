@@ -212,3 +212,52 @@ Router::get(
 ```
 
 In this example, `$key` will have the value `X-Key` and `$value` will have the value of `HeaderValue`.
+
+## Creating custom Middleware
+
+While you can use any PSR 15/7 Middleware, sometimes you need to write your own. In this example, we will create custom middleware that adds the response header `X-Foo`.
+
+First, create the class in `app/Http/Middleware/ExampleMiddleware.php` (create the folder if it doesn't exist) with the following content:
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+class ExampleMiddleware implements MiddlewareInterface
+{
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $response = $handler->handle($request);
+
+        return $response;
+    }
+}
+```
+
+In our example, we want to modify the **response**. Below we add the `X-Foo` header to the response:
+
+```php
+return $response->withHeader('X-Foo', 'Bar');
+```
+
+If you need to modify the request before it gets passed to your application, you can do so before `$handler->handle($request)` gets called:
+
+```php
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+{
+    // Chance to modify the request here before passing it into your application
+
+    // Pass the request on (to the next middleware or your application)
+    $response = $handler->handle($request);
+
+    // Chance to modify the response here before sending it back
+
+    return $response;
+}
+```

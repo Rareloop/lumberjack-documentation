@@ -6,6 +6,52 @@ sidebar_position: 3
 
 # Upgrade Guide
 
+## Upgrading to v6 from from v5
+
+We aim to document all the changes that could impact your theme, and there may only be a portion that are applicable to your theme.
+
+Lumberjack v6 **adds support for PHP 8.1**.
+
+### Replacing "tightenco/collect"
+
+[Illuminate's collection package](https://packagist.org/packages/illuminate/collections) "collect" has been separated from the core Laravel codebase and therefore the Tightenco package is no longer necessary.
+
+Update namespaces for any support `Tightenco\Collect` classes you are using.
+
+For example, change these:
+
+```php
+use Tightenco\Collect\Support\Collection;
+use Tightenco\Collect\Support\Arr;
+```
+
+To these:
+
+```php
+use Illuminate\Support\Collection;
+use Illuminate\Support\Arr;
+```
+
+### Upgrading "rareloop/lumberjack-primer"
+
+If you are using [Primer](https://github.com/rareloop/primer) with Lumberjack, you will need to also upgrade the `rareloop/lumberjack-primer` package to v2.
+
+From:
+
+```json
+"rareloop/lumberjack-primer": "^v1.0.0",
+```
+
+To:
+
+```json
+"rareloop/lumberjack-primer": "^v2.0.0",
+```
+
+## Upgrading from v4.3 to v5
+
+There is nothing that requires upgrading between these versions.
+
 ## Upgrading to v4.3 from v4.2
 
 There is nothing that requires upgrading between these versions.
@@ -16,7 +62,7 @@ We aim to document all the changes that could impact your theme, and there may o
 
 ### Extending controllers
 
-Create `app/Http/Controllers/Controller.php`  with the following contents:
+Create `app/Http/Controllers/Controller.php` with the following contents:
 
 ```php
 <?php
@@ -77,14 +123,15 @@ Update `lumberjack-core` to version 4.
 
 :::warning
 **Likelihood Of Impact: High**
+:::
 
 Support for **PHP 7.0 has been dropped**, ensure you're running at least **PHP 7.1**.
-:::
 
 ### Service Providers
 
 :::warning
 **Likelihood Of Impact: Critical**
+:::
 
 Add the following providers to `config/app.php`:
 
@@ -98,12 +145,12 @@ Add the following providers to `config/app.php`:
 ```
 
 The query builder is now part of the core, rather than an external package. If you were using the package, you will need to remove its service provider from your list of `providers` above.
-:::
 
 ### Exception Handler
 
 :::warning
 **Likelihood Of Impact: Critical**
+:::
 
 The type hint on the `render()` function has changed to the PSR interface from the concrete Zend implementation.
 
@@ -132,12 +179,12 @@ public function render(ServerRequestInterface $request, Exception $e) : Response
 ```
 
 No changes should be required to your application logic as Zend subclasses will already comply with the new interface.
-:::
 
 ### Container
 
 :::warning
 **Likelihood Of Impact: Medium**
+:::
 
 The `bind()` method on the `Application` container is no longer a singleton by default when the value (2nd param) is not a primitive or object instance.
 
@@ -164,7 +211,6 @@ $object2 = $app->get(App\AppInterface::class);
 // The container resolves new instances, so the objects are not the same
 $object1 === $object2; // false
 ```
-:::
 
 [Using the Container](./container/using-the-container)
 
@@ -172,16 +218,17 @@ $object1 === $object2; // false
 
 :::warning
 **Likelihood Of Impact: Optional, but recommended**
+:::
 
 If you're injecting an instance of the Diactoros `ServerRequest` class into a Controller, you can now switch this out for the following class if you want to benefit from some of the [new helper functions](./the-basics/http-requests.md#usage):
 
-```text
-Rareloop\Lumberjack\Http\ServerRequest
+```php
+use Rareloop\Lumberjack\Http\ServerRequest
 ```
 
 For example:
 
-```text
+```php
 use Rareloop\Lumberjack\Http\ServerRequest;
 
 class MyController
@@ -192,7 +239,6 @@ class MyController
     }
 }
 ```
-:::
 
 :::info
 If you have enabled [global helpers](./the-basics/helpers.md#request), you can use access the current `ServerRequest` instance using the `request()` helper instead of using dependency injection. For example:
@@ -206,6 +252,7 @@ class MyController
     }
 }
 ```
+
 :::
 
 Here's a quick overview of what the new `ServerRequest` object can do. _If you are using_ [_global helpers_](./the-basics/helpers.md#request)_, you can replace_ `$request` _with_ `request()` _instead in the examples below:_
@@ -247,7 +294,7 @@ $request->has('name');
 **Likelihood Of Impact: Medium**
 
 This is a previously undocumented feature. If you are using ViewModels, this is a major change to how they work. However, if you are not using ViewModels you do not need to do anything.
-:::
+:::warning
 
 View Models are simple classes that allow you to transform data that would otherwise be defined in your controller. This allows for better encapsulation of code and allows your code to be re-used across your controllers (and even across themes).
 
@@ -297,6 +344,7 @@ class MyViewModel extends ViewModel
 
 :::warning
 **Likelihood Of Impact: Very low**
+:::
 
 In `bootstrap/app.php` you should change how the exception handler is bound to `Rareloop\Lumberjack\Exceptions\HandlerInterface`.
 
@@ -311,12 +359,12 @@ To:
 ```php
 $app->singleton(HandlerInterface::class, Handler::class);
 ```
-:::
 
 ### `Helpers::app()` helper
 
 :::warning
 **Likelihood Of Impact: Very low**
+:::
 
 `Helpers::app()` (and the `app()` global counterpart) no longer use the `make()` method of the Application instance and now rely on `get()`. This provides much more consistent behaviour with other uses of the Container. If you still want to use the helpers to get `make()` behaviour you can change your code.
 
@@ -331,12 +379,12 @@ To:
 ```php
 Helpers::app()->make(MyClassName::class);
 ```
-:::
 
 ### `Router` class namespace
 
 :::warning
 **Likelihood Of Impact: Very low**
+:::
 
 If you resolve an instance of the `Router` class from the container, you'll need to change the class reference.
 
@@ -344,16 +392,15 @@ If you resolve an instance of the `Router` class from the container, you'll need
 
 From:
 
-```text
+```php
 use Rareloop\Router\Router
 ```
 
 To:
 
-```text
-Rareloop\Lumberjack\Http\Router
+```php
+use Rareloop\Lumberjack\Http\Router
 ```
-:::
 
 ### PSR-15 Middleware
 

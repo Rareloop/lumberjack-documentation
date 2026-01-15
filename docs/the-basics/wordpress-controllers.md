@@ -67,4 +67,38 @@ In WordPress, you have a `404.php` file. `PHP` Classes cannot start with a numbe
 
 Instead Lumberjack will look for a controller called `Error404Controller`
 
+## Password protected pages
+
+:::info
+Since: v6.1.0
+:::
+
+WordPress supports password protection for pages across your site. This is also [supported by Timber](https://timber.github.io/docs/v1/guides/wp-integration/#password-protected-posts) but requires you to implement it in each of your site's templates to take effect universally.
+
+To make this simpler to implement, Lumberjack adds a middleware to handle this across all page templates. When a request is made for a page that requires a password it will intercept the call and attempt to render the `single-password.twig` file instead.
+
+It is recommended that you implement the Twig file in line with what Timber suggests:
+
+```twig
+{% raw %}
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ function('get_the_password_form') }}
+{% endblock %}
+{% endraw %}
+```
+
+:::info
+**Note:** If a `single-password.twig` file is **not found,** the middleware will fall back gracefully to the default behaviour, which is to **ignore the password functionality and render the page as normal**.
+:::info
+
+### Changing the Twig file used for password protected pages
+
+If you would like to change the name of the Twig file that is used for password protection you can do so using the `lumberjack/password_protect_template` filter:
+
+```php
+add_filter('lumberjack/password_protect_template', function() {
+    return 'my-password-template.twig';
+});
 ```
