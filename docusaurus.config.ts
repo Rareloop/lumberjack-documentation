@@ -170,7 +170,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.vsLight,
       darkTheme: prismThemes.vsDark,
-      additionalLanguages: ["diff", "php"],
+      additionalLanguages: ["diff", "php", "twig"],
     },
   } satisfies Preset.ThemeConfig,
 };

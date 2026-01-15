@@ -8,4 +8,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
 }
