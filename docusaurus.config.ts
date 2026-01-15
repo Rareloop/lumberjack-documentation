@@ -18,7 +18,7 @@ const config: Config = {
   url: "https://docs.lumberjack.rareloop.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/lumberjack-documentation/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -169,8 +169,9 @@ const config: Config = {
       copyright: `Copyright © 2015 - ${new Date().getFullYear()} Rareloop Limited. Built with Docusaurus.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ["diff"],
     },
   } satisfies Preset.ThemeConfig,
 };

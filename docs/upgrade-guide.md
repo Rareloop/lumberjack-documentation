@@ -6,6 +6,169 @@ sidebar_position: 3
 
 # Upgrade Guide
 
+## Upgrading from v6 to v7
+
+Lumberjack v7 introduces Timber v2, which is likely to require broad changes. Generally speaking, we recommend following the [Timber v1 - v2 upgrade before](https://timber.github.io/docs/v2/upgrade-guides/2.0/) commencing this upgrade.
+
+:::info
+When upgrading to v7, you'll likely have lots of old, unused `use` statements that should be removed
+:::
+
+## Hatchet deprecated
+
+:::warning
+**Likelihood of impact: Low**
+:::
+
+If you're using Hatchet, our now-deprecated CLI tool, it should be removed
+
+1. Remove `rareloop/hatchet`, `rareloop/hatchet-migrations` from `composer.json`
+2. Remove `/site/web/app/themes/[theme]/hatchet`
+3. Remove `/site/web/app/themes/[theme]/config/hatchet.php`
+4. Remove `/site/web/app/themes/[theme]/app/Commands`
+
+If any commands exist, they should be converted to use WP\_CLI.
+
+## Timber-related changes
+
+### Class maps
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+In Timber v1, you had to tell it which post class you wanted back – for example:
+
+```php
+// Get instance of Lumberjack\Post
+$post = new Post();
+
+// Get Lumberjack\Post objects back
+$query = new PostQuery(false, Post::class);
+```
+
+In Timber v2, this is deprecated and `Timber::get_post()` and `Timber::get_posts()` must be used. To determine the post type, [class maps](https://timber.github.io/docs/v2/guides/class-maps/) are used.
+
+:::warning
+Lumberjack will automatically register custom post types to the class map, but you will need to add `Post` and `Page` yourself.
+:::
+
+Add the following to your `app/AppServiceProvider.php` `boot` method:
+
+```diff
+class AppServiceProvider extends ServiceProvider {
+
+  public function boot()
+  {
++    add_filter('timber/post/classmap', fn($classmap) => [
++        ...$classmap,
++        Post::getPostType() => Post::class,
++        Page::getPostType() => Page::class,
++    ]);
+  }
+}
+```
+
+### Images
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+We found the Timber v2 upgrade documentation didn't make this clear, but instantiating a `new \Timber\Image()` is deprecated and you should use `Timber::get_image()` instead.
+
+```diff
+-$image = new Image($data);
++$image = Timber::get_image($data);
+```
+
+### Update Menu.php
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+Timber has removed the `MenuItemClass` and `PostClass` properties, so these can be removed from `app/Menu/Menu.php`
+
+```diff
+<?php
+
+namespace App\Menu;
+
+use Timber\Menu as TimberMenu;
+
+class Menu extends TimberMenu
+{
+-    public $MenuItemClass = 'App\Menu\Item'; // remove
+-    public $PostClass = 'Rareloop\Lumberjack\Post'; // remove
+}
+```
+
+### Update Item.php
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+1. Timber has removed the `PostClass` property, so this can be removed from `app/Menu/Item.php`
+2. The constructor for `Timber\MenuItem` has changed to accept a post and menu object
+
+```diff
++use Timber\Menu as TimberMenu;
+use Timber\MenuItem as TimberMenuItem;
+
+class Item extends TimberMenuItem
+{
+-   public $PostClass = 'Rareloop\Lumberjack\Post';
+
+-   public function __construct($data)
++   public function __construct(?WP_Post $data = null, ?TimberMenu $menu = null)
+    {
+        parent::__construct($data);
+        
+        ...
+    }
+}
+```
+
+:::warning
+Timber has changed how it serialises menu items, meaning that any `title` keys may not be available in your template. We recommend renaming them to `label`.
+:::
+
+### Register Menu and Item classes in AppServiceProvider
+
+Similarly to the class map change, the Menu and Menu Item classes should be registered:
+
+```diff
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
++       add_filter('timber/menu/class', fn() => Menu::class);
++       add_filter('timber/menuitem/class', fn() => Item::class);        
+    }
+}
+```
+
+### empty() and ArrayObject
+
+:::warning
+**Likelihood of impact: Medium**
+:::
+
+When getting posts from Timber, you will now get an instance of `PostArrayObject` which can cause issues if your controller uses `empty` to check for results.
+
+For example:
+
+```diff
+$children = $post->children();
+
+- if (empty($children)) { // Always false
++ if (!$children->count()) { // OR count($children) === 0
+  ...
+}
+```
+
 ## Upgrading to v6 from from v5
 
 We aim to document all the changes that could impact your theme, and there may only be a portion that are applicable to your theme.
