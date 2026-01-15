@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Facades
 
-Lumberjack uses the [Blast Facades](https://github.com/phpthinktank/blast-facades) library.
+Lumberjack provides a custom implementation of Facades, based on the now-deprecated [Blast Facades](https://github.com/phpthinktank/blast-facades) library.
 
 ## Creating a Facade
 
@@ -31,7 +31,7 @@ Then create a Facade subclass and tell it which key to use to retrieve your clas
 ```php
 namespace Rareloop\Lumberjack\Facades;
 
-use Blast\Facades\AbstractFacade;
+use Rareloop\Lumberjack\Facades\AbstractFacade;
 
 class Log extends AbstractFacade
 {
