@@ -54,7 +54,7 @@ jobs:
 
   deploy:
     name: "deploy"
-    needs: [prepare, lint, build]
+    needs: [lint, build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
