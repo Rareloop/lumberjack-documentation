@@ -34,6 +34,8 @@ return [
 
 This release of Lumberjack is jam packed full of goodies. We have also added a whole lot more documentation, so grab a cuppa and make yourself comfy while we take you through all the changes.
 
+## What's new in v4.3
+
 ### Features
 
 #### Middleware Aliases on routes and controllers
@@ -57,9 +59,7 @@ Router::get(
 )->middleware('auth');
 ```
 
-{% content-ref url="the-basics/middleware.md" %}
-[middleware.md](the-basics/middleware.md)
-{% endcontent-ref %}
+[Read more about Middleware](./the-basics/middleware)
 
 #### `logger()` helper
 
@@ -81,13 +81,11 @@ If you need to access the logger class itself, to log different types of errors 
 logger()->warning('Example warning');
 ```
 
-{% hint style="info" %}
+:::info
 Also, the `Logger` instance is now also bound to the PSR-3 interface `Psr\Log\LoggerInterface` in the Container.
-{% endhint %}
+:::
 
-{% content-ref url="the-basics/helpers.md" %}
-[helpers.md](the-basics/helpers.md)
-{% endcontent-ref %}
+[Read more about Helpers](./the-basics/helpers)
 
 ### Patches
 
@@ -120,13 +118,11 @@ $query->search('Elephant');
 $posts = $query->first();
 ```
 
-{% content-ref url="the-basics/query-builder.md" %}
-[query-builder.md](the-basics/query-builder.md)
-{% endcontent-ref %}
+[Read more about Query Builder](./the-basics/query-builder)
 
 #### Define middleware in controllers
 
-You can now apply Middleware on a Controller class too, either for use with the [Router](the-basics/routing.md) or as a [WordPress Controller](the-basics/wordpress-controllers.md). In order to do this your Controller must extend the `App\Http\Controllers\Controller` base class.
+You can now apply Middleware on a Controller class too, either for use with the [Router](./the-basics/routing) or as a [WordPress Controller](./the-basics/wordpress-controllers). In order to do this your Controller must extend the `App\Http\Controllers\Controller` base class.
 
 Middleware is added by calling the `middleware()` function in your Controller's `__constructor()`.
 
@@ -150,11 +146,9 @@ class MyController extends Controller
 }
 ```
 
-{% content-ref url="the-basics/middleware.md" %}
-[middleware.md](the-basics/middleware.md)
-{% endcontent-ref %}
+[Read more about Middleware](./the-basics/middleware)
 
-#### Config has()
+#### Config has\(\)
 
 Lumberjack's configuration class now lets you check whether a config file contains a given item:
 
@@ -164,21 +158,19 @@ if (Config::has('app.mySetting') {
 }
 ```
 
-Note that the `has` method only checks whether the config item exists, regardless of its value.
+Note that the `has` method only checks whether the config item exists, regardless of its value. 
 
 If you set `app.mySetting` to an empty value such as `false` or `null`, `has('app.mySetting')` will return `true`.
 
-{% content-ref url="getting-started/configuration.md" %}
-[configuration.md](getting-started/configuration.md)
-{% endcontent-ref %}
+[Read more about Configuration](./getting-started/configuration)
 
 ### Documentation
 
 We have also added/revisited some of the documentation. We recommend checking these out:
 
-* [View Models](the-basics/view-models.md) - New documentation
-* [Middleware](the-basics/middleware.md) - New documentation
-* [Collections](the-basics/collections.md) - New documentation
+* [View Models](./the-basics/view-models) -  New documentation
+* [Middleware](./the-basics/middleware) - New documentation
+* [Collections](./the-basics/collections) - New documentation
 
 ## What's new in v4.1
 
@@ -186,9 +178,9 @@ We have also added/revisited some of the documentation. We recommend checking th
 
 #### Extending Lumberjack with Macros
 
-You can now extend core Lumberjack classes and add your own functionality without needing to rely on inheritance. Instead, you can add macros (custom functions) to the core classes themselves.
+You can now extend core Lumberjack classes and add your own functionality without needing to rely on inheritance. Instead, you can add macros \(custom functions\) to the core classes themselves.
 
-Here's an example macro, that adds a custom `acf()` method on `Rareloop\Lumberjack\Post`.
+Here's an example macro, that adds a custom `acf()` method on `Rareloop\Lumberjack\Post`. 
 
 ```php
 use Rareloop\Lumberjack\Post;
@@ -212,7 +204,7 @@ The following classes are 'macroable':
 
 ## What's new in v4.0
 
-### General
+### General 
 
 #### PHP Version
 
@@ -220,7 +212,7 @@ The first important thing to mention is that the minimum version of PHP has been
 
 #### Standardising the Container
 
-Lumberjack uses a [dependency injection container](container/using-the-container.md) under the hood, which allows you to decouple your class dependencies by having the container inject dependencies when needed.
+Lumberjack uses a [dependency injection container](./container/using-the-container) under the hood, which allows you to decouple your class dependencies by having the container inject dependencies when needed.
 
 In v3, it wasn't clear when you were resolving a singleton or a new instance of a class from the container. It could have lead to some unusual & unexpected issues, so we decided to make things much clearer with v4 and standardise the behaviour.
 
@@ -291,20 +283,20 @@ And when we modify the instance, its state will persist:
 ```php
 // Bind a class to the container
 $app->singleton('key', MyClass::class);
-​
+
 $value1 = $app->get('key');
-​
+
 // Modify $value1
 $value1->name = 'Adam';
-​
+
 // Get 'key' from the container again
 $value2 = $app->get('key');
-​
+
 // 'name' is available because $value2 is the same object as $value1
 $value2->name; // 'Adam'
 ```
 
-{% hint style="info" %}
+:::info
 It is important to note that if you bind **an object instance** to the container, you will always get that instance back. For example:
 
 ```php
@@ -320,13 +312,11 @@ $value1 === $value2; // true
 
 $value2->name; // 'Adam'
 ```
-{% endhint %}
+:::
 
 Head over to the "Using the Container" docs to learn more:
 
-{% content-ref url="container/using-the-container.md" %}
-[using-the-container.md](container/using-the-container.md)
-{% endcontent-ref %}
+[Read more about Using the Container](./container/using-the-container)
 
 ### Features
 
@@ -337,28 +327,24 @@ To make your development lives easier, there are now some additional helper func
 * `redirect()` - returns a `RedirectResponse`
 * `back()` - returns a `RedirectResponse` which automatically redirects back to the previous URL
 * `report($exception)` - tells the Exception Handler to report an exception. Useful if your theme needs to swallow an exception, but you still want to log the fact that it happened
-* `request()` - returns the current `ServerRequest` object
+* `request()` - returns the current `ServerRequest` object
 * `session()` - can be used to interact with the session in various ways
 
 Check out the Helpers documentation for more details:
 
-{% content-ref url="the-basics/helpers.md" %}
-[helpers.md](the-basics/helpers.md)
-{% endcontent-ref %}
+[Read more about Helpers](./the-basics/helpers)
 
 #### Query Builder
 
-We've baked-in the [rareloop/lumberjack-querybuilder](https://github.com/Rareloop/lumberjack-querybuilder) package into the core. You now get an expressive, fluent and explicit way of querying data in WordPress out-of-the-box with Lumberjack. It can be used instead of [WP\_Query](https://codex.wordpress.org/Class\_Reference/WP\_Query) to query posts (of any type) and means you do not have to worry about "the loop".
+We've baked-in the [rareloop/lumberjack-querybuilder](https://github.com/Rareloop/lumberjack-querybuilder) package into the core. You now get an expressive, fluent and explicit way of querying data in WordPress out-of-the-box with Lumberjack. It can be used instead of [WP_Query](https://codex.wordpress.org/Class_Reference/WP_Query) to query posts \(of any type\) and means you do not have to worry about "the loop".
 
-{% content-ref url="the-basics/query-builder.md" %}
-[query-builder.md](the-basics/query-builder.md)
-{% endcontent-ref %}
+[Read more about Query Builder](./the-basics/query-builder)
 
 #### Sessions
 
 This is one of the bigger features added to v4. You can now manage sessions in a concise, expressive and headache-free way.
 
-Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_ ](the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
+Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](./the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_ ](./the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
 
 ```php
 // Get a value, with a default value
@@ -382,9 +368,7 @@ session()->forget('key');
 
 Be sure to read the Sessions documentation for a more in-depth look:
 
-{% content-ref url="the-basics/session.md" %}
-[session.md](the-basics/session.md)
-{% endcontent-ref %}
+[Read more about Session](./the-basics/session)
 
 #### Interacting with the request
 
@@ -434,10 +418,10 @@ $request = request();
 $request->path(); // e.g. /path
 
 // Get the current URL
-$request->url(); // e.g. http://test.com/path
+$request->url(); // e.g. [http://test.com/path](http://test.com/path)
 
 // Get the current URL, with query parameters etc
-$request->fullUrl(); // e.g. http://test.com/path?name=adam
+$request->fullUrl(); // e.g. [http://test.com/path?name=adam](http://test.com/path?name=adam)
 
 // Get query params
 $request->query();
@@ -453,18 +437,14 @@ $request->has('name');
 
 You can read the HTTP Requests documentation for more information:
 
-{% content-ref url="the-basics/http-requests.md" %}
-[http-requests.md](the-basics/http-requests.md)
-{% endcontent-ref %}
+[Read more about HTTP Requests](./the-basics/http-requests)
 
 ### Documentation
 
 We have also added/revisited some of the documentation. We recommend checking these out:
 
-* [Upgrade Guide](upgrade-guide.md) - How to upgrade to v4 from v3
-* [HTTP Requests](the-basics/http-requests.md) - New feature!
-* [Sessions](the-basics/session.md) - New feature!
-* [Using the Container](container/using-the-container.md) - Revisited docs after the changes to the container's behaviour
-* [Helpers](the-basics/helpers.md) - Added more helpers
-
-[^1]: 
+* [Upgrade Guide](./upgrade-guide) - How to upgrade to v4 from v3
+* [HTTP Requests](./the-basics/http-requests) - New feature!
+* [Sessions](./the-basics/session) - New feature!
+* [Using the Container](./container/using-the-container) - Revisited docs after the changes to the container's behaviour
+* [Helpers](./the-basics/helpers) - Added more helpers
