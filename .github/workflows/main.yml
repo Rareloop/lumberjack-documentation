@@ -11,66 +11,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  prepare:
-    name: "prepare"
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
+      - name: node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Cache dependencies
-        id: cache-deps
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-
-      - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+          cache: "npm"
+      - name: install dependencies
         run: npm ci
-
-  lint:
-    name: Lint
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Restore node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: ESLint
+      - name: eslint
         run: npm run lint
 
   build:
     name: "build"
-    needs: prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-      - name: Restore node_modules
-        uses: actions/cache@v4
+      - name: node
+        uses: actions/setup-node@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Check TypeScript
+          node-version: 22
+          cache: "npm"
+      - name: install dependencies
+        run: npm ci
+      - name: check TypeScript
         run: npm run typecheck
-      - name: Build
+      - name: build
         run: npm run build
-      - name: Upload Build Artifact
+      - name: upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           name: docusaurus-build
-          path: build
+          path: ./build
           retention-days: 1
 
   deploy:
@@ -85,7 +64,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: deploy production
         id: deployment
         uses: actions/deploy-pages@v4
         with:
