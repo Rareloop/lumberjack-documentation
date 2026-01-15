@@ -17,3 +17,7 @@
   --ifm-footer-title-color: var(--ifm-color-secondary);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
+
+.language-php .token.plain-text {
+  color: inherit;
+}

@@ -55,7 +55,6 @@ const config: Config = {
   ],
 
   trailingSlash: false,
-  deploymentBranch: "gh-pages",
 
   themeConfig: {
     // Replace with your project's social card
@@ -171,7 +170,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.vsLight,
       darkTheme: prismThemes.vsDark,
-      additionalLanguages: ["diff"],
+      additionalLanguages: ["diff", "php"],
     },
   } satisfies Preset.ThemeConfig,
 };
