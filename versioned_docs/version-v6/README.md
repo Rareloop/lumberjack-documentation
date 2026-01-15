@@ -12,7 +12,7 @@ Lumberjack is a powerful MVC framework for the modern WordPress developer. Write
 ### Who is Lumberjack for?
 
 Coming from another PHP framework such as Laravel, have experience using Timber with WordPress but want more, or are just getting started with modern WordPress? Then Lumberjack is for you.
-  
+
 Use as little or as much as you need, it's beginner friendly!
 
 ### Beautiful code. Easy to maintain
@@ -55,14 +55,14 @@ class IndexController
 
 ### You're in good company
 
-> Lumberjack is the deluxe version of what Modern WordPress should look like today. The team has done a great job of making it easy to build complicated custom applications while taking advantage of the best parts of WordPress.  
->   
->  - _**Jared Novack - Timber creator**_
+> Lumberjack is the deluxe version of what Modern WordPress should look like today. The team has done a great job of making it easy to build complicated custom applications while taking advantage of the best parts of WordPress.
+>
+> - _**Jared Novack - Timber creator**_
 
 Standing on the shoulders of giants, Lumberjack proudly builds on the great work of other open source WordPress projects:
 
-* [Timber](https://www.upstatement.com/timber/)
-* [Bedrock](https://roots.io/bedrock/)
+- [Timber](https://www.upstatement.com/timber/)
+- [Bedrock](https://roots.io/bedrock/)
 
 ### Made by [Rareloop](https://rareloop.com)
 

@@ -32,16 +32,16 @@ Then, tell composer to regenerate its list of autoloaded files by running `compo
 
 ## Available Helpers
 
-* [app](#app)
-* [config](#config)
-* [view](#view)
-* [route](#route)
-* [redirect](#redirect)
-* [session](#session)
-* [request](#request)
-* [back](#back)
-* [report](#report)
-* [logger](#logger)
+- [app](#app)
+- [config](#config)
+- [view](#view)
+- [route](#route)
+- [redirect](#redirect)
+- [session](#session)
+- [request](#request)
+- [back](#back)
+- [report](#report)
+- [logger](#logger)
 
 ### app
 

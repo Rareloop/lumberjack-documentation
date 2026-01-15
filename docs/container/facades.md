@@ -46,12 +46,12 @@ class Log extends AbstractFacade
 
 Lumberjack comes with a handful of useful Facades. Below you can see which class the Facade references and what it is bound to the container under.
 
-| Facade | Class Reference | Container binding |
-| :--- | :--- | :--- |
-| Config | `Rareloop\Lumberjack\Config` | `config` |
-| Log | `Monolog\Logger` | `logger` |
-| Router | `Rareloop\Lumberjack\Http\Route` | `router` |
-| Session | `Rareloop\Lumberjack\Session\SessionManager` | `session` |
+| Facade  | Class Reference                              | Container binding |
+| :------ | :------------------------------------------- | :---------------- |
+| Config  | `Rareloop\Lumberjack\Config`                 | `config`          |
+| Log     | `Monolog\Logger`                             | `logger`          |
+| Router  | `Rareloop\Lumberjack\Http\Route`             | `router`          |
+| Session | `Rareloop\Lumberjack\Session\SessionManager` | `session`         |
 
 ### Example usage
 

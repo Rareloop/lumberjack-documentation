@@ -16,9 +16,9 @@ Lumberjack will no longer give a 500 error for deprecation warnings, and instead
 
 Specifically, lumberjack will only report (and not render) the following error codes:
 
-* `E_DEPRECATED` - _Run-time notices. Enable this to receive warnings about code that will not work in future versions._
-* `E_USER_DEPRECATED` - _User-generated warning message. This is like an E\_DEPRECATED, except it is generated in PHP code by using the PHP function trigger\_error()._
-* `E_USER_NOTICE` - _User-generated notice message. This is like an E\_NOTICE, except it is generated in PHP code by using the PHP function trigger\_error()._
+- `E_DEPRECATED` - _Run-time notices. Enable this to receive warnings about code that will not work in future versions._
+- `E_USER_DEPRECATED` - _User-generated warning message. This is like an E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error()._
+- `E_USER_NOTICE` - _User-generated notice message. This is like an E_NOTICE, except it is generated in PHP code by using the PHP function trigger_error()._
 
 If you need to change this behaviour, you can add a new config file `config/errors.php` in your theme, like so:
 
@@ -54,7 +54,7 @@ You can now use this in your route definition like this:
 
 ```php
 Router::get(
-    'route/uri', 
+    'route/uri',
     '\App\Http\Controllers\TestController@testMethod'
 )->middleware('auth');
 ```
@@ -107,7 +107,7 @@ use Rareloop\Lumberjack\QueryBuilder;
 // Add custom function
 QueryBuilder::macro('search', function ($term) {
     $this->params['s'] = $term;
-    
+
     return $this;
 });
 
@@ -158,7 +158,7 @@ if (Config::has('app.mySetting') {
 }
 ```
 
-Note that the `has` method only checks whether the config item exists, regardless of its value. 
+Note that the `has` method only checks whether the config item exists, regardless of its value.
 
 If you set `app.mySetting` to an empty value such as `false` or `null`, `has('app.mySetting')` will return `true`.
 
@@ -168,9 +168,9 @@ If you set `app.mySetting` to an empty value such as `false` or `null`, `has('ap
 
 We have also added/revisited some of the documentation. We recommend checking these out:
 
-* [View Models](./the-basics/view-models) -  New documentation
-* [Middleware](./the-basics/middleware) - New documentation
-* [Collections](./the-basics/collections) - New documentation
+- [View Models](./the-basics/view-models) - New documentation
+- [Middleware](./the-basics/middleware) - New documentation
+- [Collections](./the-basics/collections) - New documentation
 
 ## What's new in v4.1
 
@@ -180,7 +180,7 @@ We have also added/revisited some of the documentation. We recommend checking th
 
 You can now extend core Lumberjack classes and add your own functionality without needing to rely on inheritance. Instead, you can add macros \(custom functions\) to the core classes themselves.
 
-Here's an example macro, that adds a custom `acf()` method on `Rareloop\Lumberjack\Post`. 
+Here's an example macro, that adds a custom `acf()` method on `Rareloop\Lumberjack\Post`.
 
 ```php
 use Rareloop\Lumberjack\Post;
@@ -197,14 +197,14 @@ $value = $post->acf('custom_field_name');
 
 The following classes are 'macroable':
 
-* `Rareloop\Lumberjack\Post`
-* `Rareloop\Router\Router`
-* `Rareloop\Router\RouteGroup`
-* `Rareloop\Router\Route`
+- `Rareloop\Lumberjack\Post`
+- `Rareloop\Router\Router`
+- `Rareloop\Router\RouteGroup`
+- `Rareloop\Router\Route`
 
 ## What's new in v4.0
 
-### General 
+### General
 
 #### PHP Version
 
@@ -312,6 +312,7 @@ $value1 === $value2; // true
 
 $value2->name; // 'Adam'
 ```
+
 :::
 
 Head over to the "Using the Container" docs to learn more:
@@ -324,11 +325,11 @@ Head over to the "Using the Container" docs to learn more:
 
 To make your development lives easier, there are now some additional helper functions available. These are:
 
-* `redirect()` - returns a `RedirectResponse`
-* `back()` - returns a `RedirectResponse` which automatically redirects back to the previous URL
-* `report($exception)` - tells the Exception Handler to report an exception. Useful if your theme needs to swallow an exception, but you still want to log the fact that it happened
-* `request()` - returns the current `ServerRequest` object
-* `session()` - can be used to interact with the session in various ways
+- `redirect()` - returns a `RedirectResponse`
+- `back()` - returns a `RedirectResponse` which automatically redirects back to the previous URL
+- `report($exception)` - tells the Exception Handler to report an exception. Useful if your theme needs to swallow an exception, but you still want to log the fact that it happened
+- `request()` - returns the current `ServerRequest` object
+- `session()` - can be used to interact with the session in various ways
 
 Check out the Helpers documentation for more details:
 
@@ -382,7 +383,7 @@ class ExampleController
     public function handle(ServerRequest $request)
     {
 
-    } 
+    }
 }
 ```
 
@@ -396,7 +397,7 @@ class ExampleController
     public function handle(ServerRequest $request)
     {
 
-    } 
+    }
 }
 ```
 
@@ -443,8 +444,8 @@ You can read the HTTP Requests documentation for more information:
 
 We have also added/revisited some of the documentation. We recommend checking these out:
 
-* [Upgrade Guide](./upgrade-guide) - How to upgrade to v4 from v3
-* [HTTP Requests](./the-basics/http-requests) - New feature!
-* [Sessions](./the-basics/session) - New feature!
-* [Using the Container](./container/using-the-container) - Revisited docs after the changes to the container's behaviour
-* [Helpers](./the-basics/helpers) - Added more helpers
+- [Upgrade Guide](./upgrade-guide) - How to upgrade to v4 from v3
+- [HTTP Requests](./the-basics/http-requests) - New feature!
+- [Sessions](./the-basics/session) - New feature!
+- [Using the Container](./container/using-the-container) - Revisited docs after the changes to the container's behaviour
+- [Helpers](./the-basics/helpers) - Added more helpers

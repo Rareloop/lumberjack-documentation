@@ -113,15 +113,15 @@ Router::map(['GET', 'POST'], 'posts/list', function () {
 
 `map()` takes 3 parameters:
 
-* `methods` (array): list of matching HTTP methods, valid values:
-  * `GET`
-  * `POST`
-  * `PUT`
-  * `PATCH`
-  * `DELETE`
-  * `OPTIONS`
-* `uri` (string): The URI to match against
-* `action` (function|string): Either a closure or a Controller string
+- `methods` (array): list of matching HTTP methods, valid values:
+  - `GET`
+  - `POST`
+  - `PUT`
+  - `PATCH`
+  - `DELETE`
+  - `OPTIONS`
+- `uri` (string): The URI to match against
+- `action` (function|string): Either a closure or a Controller string
 
 ## Middleware
 
@@ -179,4 +179,3 @@ Router::group(['prefix' => 'my-prefix', 'middleware' => [$header, $auth]]), func
     $group->:get('route2', function () {}); // GET `/my-prefix/route2`
 });
 ```
-

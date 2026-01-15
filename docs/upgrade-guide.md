@@ -142,7 +142,7 @@ If you're using Hatchet, our now-deprecated CLI tool, it should be removed
 3. Remove `/site/web/app/themes/[theme]/config/hatchet.php`
 4. Remove `/site/web/app/themes/[theme]/app/Commands`
 
-If any commands exist, they should be converted to use WP\_CLI.
+If any commands exist, they should be converted to use WP_CLI.
 
 ### Timber-related changes
 
@@ -240,7 +240,7 @@ class Item extends TimberMenuItem
 +   public function __construct(?WP_Post $data = null, ?TimberMenu $menu = null)
     {
         parent::__construct($data);
-        
+
         ...
     }
 }
@@ -260,7 +260,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 +       add_filter('timber/menu/class', fn() => Menu::class);
-+       add_filter('timber/menuitem/class', fn() => Item::class);        
++       add_filter('timber/menuitem/class', fn() => Item::class);
     }
 }
 ```
@@ -373,13 +373,13 @@ class SingleController extends Controller
 
 Here are the list of controllers that come out of the box:
 
-* `404.php`
-* `archive.php`
-* `author.php`
-* `index.php`
-* `page.php`
-* `search.php`
-* `single.php`
+- `404.php`
+- `archive.php`
+- `author.php`
+- `index.php`
+- `page.php`
+- `search.php`
+- `single.php`
 
 ## Upgrading to v4.1 from v4.0
 

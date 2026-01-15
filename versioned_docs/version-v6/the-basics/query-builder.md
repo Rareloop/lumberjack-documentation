@@ -207,20 +207,20 @@ $posts = Post::exclude(1)
 
 All the available methods can be chained, with the exclusion of `getParameters` and `get`.
 
-* [getParameters](#getparameters)
-* [wherePostType](#whereposttypeposttype)
-* [whereIdIn](#whereidinarray-ids)
-* [whereIdNotIn](#whereidnotinarray-ids)
-* [whereStatus](#wherestatus)
-* [whereMeta](#wheremetakey-value-compare---type--null)
-* [whereMetaRelationshipIs](#wheremetarelationshipisstring-relation)
-* [limit](#limitlimit)
-* [offset](#offsetoffset)
-* [orderBy](#orderbyorderby-order--asc)
-* [get](#get)
-* [first](#first)
-* [as](#aspostclass)
-* [clone](#clone)
+- [getParameters](#getparameters)
+- [wherePostType](#whereposttypeposttype)
+- [whereIdIn](#whereidinarray-ids)
+- [whereIdNotIn](#whereidnotinarray-ids)
+- [whereStatus](#wherestatus)
+- [whereMeta](#wheremetakey-value-compare---type--null)
+- [whereMetaRelationshipIs](#wheremetarelationshipisstring-relation)
+- [limit](#limitlimit)
+- [offset](#offsetoffset)
+- [orderBy](#orderbyorderby-order--asc)
+- [get](#get)
+- [first](#first)
+- [as](#aspostclass)
+- [clone](#clone)
 
 ### getParameters
 
@@ -262,8 +262,8 @@ _Alternatively, you can add your own methods to the query builder using macros. 
 
 ### wherePostType($postType)
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
+| Parameter   | Type                | Description         |
+| :---------- | :------------------ | :------------------ |
 | `$postType` | `string` \| `array` | e.g. 'post', 'page' |
 
 Scope the query to a particular post type, or post types.
@@ -285,31 +285,31 @@ When using the query builder from a post type, the query is automatically scoped
 $jobs = Job::builder()->get();
 ```
 
-_Reference:_ [_WP_Query - Type Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters)__
+_Reference:_ [_WP_Query - Type Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters)\_\_
 
 ### whereIdIn(array $ids)
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
-| `$ids` | `array` | An array of post IDs |
+| Parameters | Type    | Description          |
+| :--------- | :------ | :------------------- |
+| `$ids`     | `array` | An array of post IDs |
 
 Scope the query to only look for specific post IDs.
 
 Sets the `post__in` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)__
+_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)\_\_
 
 ### whereIdNotIn(array $ids)
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
-| `$ids` | `array` | An array of post IDs |
+| Parameters | Type    | Description          |
+| :--------- | :------ | :------------------- |
+| `$ids`     | `array` | An array of post IDs |
 
 Scope the query to exclude specific post IDs.
 
 Sets the `post__not_in` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)__
+_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)\_\_
 
 ### whereStatus()
 
@@ -317,8 +317,8 @@ This method can either take an array of statuses, or multiple parameters for eac
 
 **Array of statuses:**
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
+| Parameters  | Type    | Description                                     |
+| :---------- | :------ | :---------------------------------------------- |
 | `$statuses` | `array` | An array of statuses. e.g. `publish` or `draft` |
 
 ```php
@@ -327,11 +327,11 @@ $query->whereStatus(['publish', 'draft']);
 
 **Multiple parameters:**
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
-| `$status` | `string` | A status. e.g. `publish` or `draft` |
-| `$status` | `string` | A status. e.g. `publish` or `draft` |
-| ... | ... | ... |
+| Parameters | Type     | Description                         |
+| :--------- | :------- | :---------------------------------- |
+| `$status`  | `string` | A status. e.g. `publish` or `draft` |
+| `$status`  | `string` | A status. e.g. `publish` or `draft` |
+| ...        | ...      | ...                                 |
 
 ```php
 $query->whereStatus('publish', 'draft');
@@ -341,20 +341,20 @@ Scope the query to only include posts with the given status. By default WordPres
 
 Sets the `post_status` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Status Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters)__
+_Reference:_ [_WP_Query - Status Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters)\_\_
 
 ### whereMeta($key, $value, $compare = '=', $type = null)
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
-| `$key` | `string` | The meta key |
-| `$value` | `string` | The meta value |
-| `$compare` | `string` | Optional. Defaults to `=` |
-| `$type` | `string` \| `null` | Optional. Defaults to `null`. Pass in a value here to define the custom field type. e.g. `numeric`. |
+| Parameters | Type               | Description                                                                                         |
+| :--------- | :----------------- | :-------------------------------------------------------------------------------------------------- |
+| `$key`     | `string`           | The meta key                                                                                        |
+| `$value`   | `string`           | The meta value                                                                                      |
+| `$compare` | `string`           | Optional. Defaults to `=`                                                                           |
+| `$type`    | `string` \| `null` | Optional. Defaults to `null`. Pass in a value here to define the custom field type. e.g. `numeric`. |
 
 Scope posts that have the specified custom meta fields.
 
-Adds an array of meta query arguments to the array of `meta_query`  arguments on `WP_Query`.
+Adds an array of meta query arguments to the array of `meta_query` arguments on `WP_Query`.
 
 ```php
 'meta_query' => [
@@ -401,12 +401,12 @@ This will yield the following parameters:
 ]
 ```
 
-_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)__
+_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)\_\_
 
 ### whereMetaRelationshipIs(string $relation)
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
+| Parameters  | Type     | Description                                                         |
+| :---------- | :------- | :------------------------------------------------------------------ |
 | `$relation` | `string` | The type of relationship between meta queries. Accepts `and` & `or` |
 
 Sets the `relation` field for your meta queries, for `WP_Query`.
@@ -436,38 +436,38 @@ This will yield the following parameters, adding the `'relation' => 'or'` to the
 ]
 ```
 
-_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)__
+_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)\_\_
 
 ### limit($limit)
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `$limit` | `int` | e.g. 25 |
+| Parameter | Type  | Description |
+| :-------- | :---- | :---------- |
+| `$limit`  | `int` | e.g. 25     |
 
 Set the number of results to get back from the query.
 
 Sets the `posts_per_page` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)__
+_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)\_\_
 
 ### offset($offset)
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `$offset` | `int` | e.g. 50 |
+| Parameter | Type  | Description |
+| :-------- | :---- | :---------- |
+| `$offset` | `int` | e.g. 50     |
 
 Set the number of results to displace or pass over.
 
 Sets the `offset` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)__
+_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)\_\_
 
 ### orderBy($orderBy, $order = 'asc')
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `$orderBy` | `string` | e.g. 'menu_order' |
-| `$order` | `string` | Optional. Defaults to 'asc' (ascending) |
+| Parameter  | Type     | Description                             |
+| :--------- | :------- | :-------------------------------------- |
+| `$orderBy` | `string` | e.g. 'menu_order'                       |
+| `$order`   | `string` | Optional. Defaults to 'asc' (ascending) |
 
 Sort retrieved posts by parameter, e.g. date, title, menu_order.
 
@@ -477,24 +477,24 @@ Sets the `orderby` and `order` arguments in `WP_Query`.
 $query->orderBy('title', 'asc');
 ```
 
-_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)__
+_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)\_\_
 
 ### orderByMeta($metaKey, $order = 'asc', $type = null)
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `$metaKey` | `string` | The meta key to order by |
-| `$order` | `string` | Optional. Defaults to 'asc' (ascending) |
-| `$type` | `string` | Optional. Defaults to null. Sorting will be alphabetical for strings. When dealing with numbers, you can get some unexpected results (e.g. 1, 3, 34, 4, 56, 6, etc, rather than 1, 3, 4, 6, 34, 56 as you might naturally expect). Pass in 'numeric' here if you plan on sorting numbers. |
+| Parameter  | Type     | Description                                                                                                                                                                                                                                                                               |
+| :--------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$metaKey` | `string` | The meta key to order by                                                                                                                                                                                                                                                                  |
+| `$order`   | `string` | Optional. Defaults to 'asc' (ascending)                                                                                                                                                                                                                                                   |
+| `$type`    | `string` | Optional. Defaults to null. Sorting will be alphabetical for strings. When dealing with numbers, you can get some unexpected results (e.g. 1, 3, 34, 4, 56, 6, etc, rather than 1, 3, 4, 6, 34, 56 as you might naturally expect). Pass in 'numeric' here if you plan on sorting numbers. |
 
 Sets the `orderby` argument for `WP_Query` to `meta_value` when ordering strings, and `meta_value_num` when ordering numbers.
 
-_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)__
+_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)\_\_
 
 ### as($postClass)
 
-| Parameters | Type | Description |
-| :--- | :--- | :--- |
+| Parameters   | Type     | Description                                                         |
+| :----------- | :------- | :------------------------------------------------------------------ |
 | `$postClass` | `string` | The name of the post class that you want the results transformed to |
 
 When using `WP_Query`, you get an array of `WP_Post` objects back. The query builder will instead return an array of `Rareloop\Lumberjack\Post` objects back.
@@ -517,9 +517,10 @@ Note: When using the query builder on a post type, this conversion is done autom
 // Get an array of Event object
 $events = Event::get();
 ```
+
 :::
 
-_Reference:_ [_Timber - get_posts()_](https://timber.github.io/docs/reference/timber/#get-posts)__
+_Reference:_ [_Timber - get_posts()_](https://timber.github.io/docs/reference/timber/#get-posts)\_\_
 
 ### get()
 

@@ -95,13 +95,13 @@ class SingleController extends Controller
 
 Here are the list of controllers that come out of the box:
 
-* `404.php`
-* `archive.php`
-* `author.php`
-* `index.php`
-* `page.php`
-* `search.php`
-* `single.php`
+- `404.php`
+- `archive.php`
+- `author.php`
+- `index.php`
+- `page.php`
+- `search.php`
+- `single.php`
 
 ## Upgrading to v4.1 from v4.0
 

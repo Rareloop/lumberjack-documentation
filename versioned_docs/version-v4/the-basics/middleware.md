@@ -125,12 +125,12 @@ To register an alias you can use the `MiddlewareAliases` facade. It is recommend
 
 There are 3 ways to define your middleware alias:
 
-* A closure factory _(recommended - always creates a new instance when used)_
-* A class name _(always resolves a new instance from the Container when used)_
-* A previously instantiated object _(you don't get the benefits of lazy loading)_
+- A closure factory _(recommended - always creates a new instance when used)_
+- A class name _(always resolves a new instance from the Container when used)_
+- A previously instantiated object _(you don't get the benefits of lazy loading)_
 
 :::info
-_See "[_Setting entries in the container_](../container/using-the-container#setting-entries-in-the-container)_" for more information about the differences between these. While only the class name uses the container, principally they behave in the same way with regards to lazy-loading and object instantiation_.
+_See "[\_Setting entries in the container_](../container/using-the-container#setting-entries-in-the-container)_" for more information about the differences between these. While only the class name uses the container, principally they behave in the same way with regards to lazy-loading and object instantiation_.
 :::
 
 #### Using a closure factory (recommended)

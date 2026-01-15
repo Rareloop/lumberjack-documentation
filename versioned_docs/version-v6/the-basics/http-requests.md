@@ -24,9 +24,9 @@ You can also use the `request()` [helper](helpers#adding-global-helpers) to acce
 
 ```php
 use Rareloop\Lumberjack\Helpers;
-​
+
 $request = Helpers::request();
-​
+
 // Or if you have global helpers enabled:
 $request = request();
 ```

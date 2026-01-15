@@ -25,7 +25,7 @@ class SingleController
     {
         $context = Timber::get_context();
         $post = new Post;
-        
+
         $date = new \DateTime($post->post_date);
 
         $context['card'] = [
@@ -44,9 +44,9 @@ class SingleController
 
 First, create a View Model. With the example above, we want to transform a `Post` object to an array that has the following keys:
 
-* `title`
-* `description`
-* `published`
+- `title`
+- `description`
+- `published`
 
 First off, lets create an empty view model.
 
@@ -157,7 +157,7 @@ The above will ensure the `$context` looks like the following when the view mode
 ```php
 $context = [
     // ...
-    
+
     'card' => [
         'title' => 'Post Title',
         'description' => 'Lorem ipsum dolor...',
@@ -190,12 +190,12 @@ $context['cards'] = [
     [
         'title' => 'Post Title',
         'description' => 'Lorem ipsum dolor...',
-        'published' => '2019-02-23',    
+        'published' => '2019-02-23',
     ],
     [
         'title' => 'Post Title 2',
         'description' => 'Lorem ipsum dolor...',
-        'published' => '2019-02-26',    
+        'published' => '2019-02-26',
     ],
 ];
 ```
@@ -228,7 +228,7 @@ class MediaCardsViewModel extends ViewModel
             return new MediaCardViewModel($post);
         });
     }
-    
+
     /**
      * Overwrite the toArray method to return array of view models, with no key
      */
@@ -268,7 +268,7 @@ class TestimonialViewModel extends ViewModel
         return $this->quote;
     }
 
-    
+
     public function citation()
     {
         return $this->citation;
@@ -298,12 +298,12 @@ class SingleController
     {
         $context = Timber::get_context();
         $post = new Post;
-        
+
         // Get the data from somewhere, for example from ACF
         // You would have to duplicate these two lines in each controller
         $quote = get_field('testimonial_quote', $post->id);
         $citation = get_field('testimonial_citation', $post->id);
-        
+
         $context['testimonial'] = new TestimonialViewModel($quote, $citation);
 
         return new TimberResponse('mytemplate.twig', $context);
@@ -326,17 +326,17 @@ use Rareloop\Lumberjack\Post;
 use Rareloop\Lumberjack\ViewModel;
 
 class TestimonialViewModel extends ViewModel
-{    
+{
     protected $quote;
     protected $citation;
-    
+
     public static function forPost(Post $post)
     {
         // Get the data from somewhere, for example from ACF
         $quote = get_field('testimonial_quote', $post->id);
         $citation = get_field('testimonial_citation', $post->id);
-    
-        // Create a new instance of this class    
+
+        // Create a new instance of this class
         return new static($quote, $citation);
     }
 
@@ -351,7 +351,7 @@ class TestimonialViewModel extends ViewModel
         return $this->quote;
     }
 
-    
+
     public function citation()
     {
         return $this->citation;
@@ -377,7 +377,7 @@ class SingleController
     {
         $context = Timber::get_context();
         $post = new Post;
-        
+
         $context['testimonial'] = TestimonialViewModel::forPost($post);
 
         return new TimberResponse('mytemplate.twig', $context);
@@ -389,9 +389,9 @@ class SingleController
 You can have multiple named constructors on a view model to construct it with different data. For example you could have a `PostTeasersViewModel` which transforms a collection of posts ready for a list view.
 And you could have the following named constructor:
 
-* `latestPosts($limit = 3)`- which knows how to get the latest _n_ posts.
-* `relatedPosts(Post $post)`- which knows how to get posts related to given post
-:::
+- `latestPosts($limit = 3)`- which knows how to get the latest _n_ posts.
+- `relatedPosts(Post $post)`- which knows how to get posts related to given post
+  :::
 
 ## Using Hatchet
 

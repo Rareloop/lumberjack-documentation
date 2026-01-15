@@ -16,7 +16,7 @@ We aim to document all the changes that could impact your theme, and there may o
 
 ### Extending controllers
 
-Create `app/Http/Controllers/Controller.php`  with the following contents:
+Create `app/Http/Controllers/Controller.php` with the following contents:
 
 ```php
 <?php
@@ -49,13 +49,13 @@ class SingleController extends Controller
 
 Here are the list of controllers that come out of the box:
 
-* `404.php`
-* `archive.php`
-* `author.php`
-* `index.php`
-* `page.php`
-* `search.php`
-* `single.php`
+- `404.php`
+- `archive.php`
+- `author.php`
+- `index.php`
+- `page.php`
+- `search.php`
+- `single.php`
 
 ## Upgrading to v4.1 from v4.0
 
@@ -164,6 +164,7 @@ $object2 = $app->get(App\AppInterface::class);
 // The container resolves new instances, so the objects are not the same
 $object1 === $object2; // false
 ```
+
 :::
 
 [Using the Container](./container/using-the-container)
@@ -192,6 +193,7 @@ class MyController
     }
 }
 ```
+
 :::
 
 :::info
@@ -206,6 +208,7 @@ class MyController
     }
 }
 ```
+
 :::
 
 Here's a quick overview of what the new `ServerRequest` object can do. _If you are using_ [_global helpers_](./the-basics/helpers.md#request)_, you can replace_ `$request` _with_ `request()` _instead in the examples below:_
@@ -311,6 +314,7 @@ To:
 ```php
 $app->singleton(HandlerInterface::class, Handler::class);
 ```
+
 :::
 
 ### `Helpers::app()` helper
@@ -331,6 +335,7 @@ To:
 ```php
 Helpers::app()->make(MyClassName::class);
 ```
+
 :::
 
 ### `Router` class namespace
@@ -353,6 +358,7 @@ To:
 ```text
 Rareloop\Lumberjack\Http\Router
 ```
+
 :::
 
 ### PSR-15 Middleware

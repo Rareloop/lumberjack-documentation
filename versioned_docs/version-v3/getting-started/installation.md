@@ -7,8 +7,8 @@ sidebar_position: 2
 
 ## Requirements
 
-* PHP >= 7.0
-* Installation via Composer (e.g. Bedrock)
+- PHP >= 7.0
+- Installation via Composer (e.g. Bedrock)
 
 ## Installing
 

@@ -36,10 +36,10 @@ WordPress doesn't know anything about custom routes, so you may need to manually
 
 Some good candidates for a custom route could include:
 
-* An AJAX endpoint
-* An endpoint to POST a form to (which could send an email)
-* A custom e-commerce checkout workflow (e.g. basket, checkout, confirmation pages)
-:::
+- An AJAX endpoint
+- An endpoint to POST a form to (which could send an email)
+- A custom e-commerce checkout workflow (e.g. basket, checkout, confirmation pages)
+  :::
 
 ### Setting the page title for custom routes
 
@@ -103,8 +103,6 @@ class TestController
     }
 }
 ```
-
-
 
 ## Route Parameters
 
@@ -242,15 +240,15 @@ Router::map(['GET', 'POST'], 'posts/list', function () {
 
 `map()` takes 3 parameters:
 
-* `methods` (array): list of matching HTTP methods, valid values:
-  * `GET`
-  * `POST`
-  * `PUT`
-  * `PATCH`
-  * `DELETE`
-  * `OPTIONS`
-* `uri` (string): The URI to match against
-* `action` (function|string): Either a closure or a Controller string
+- `methods` (array): list of matching HTTP methods, valid values:
+  - `GET`
+  - `POST`
+  - `PUT`
+  - `PATCH`
+  - `DELETE`
+  - `OPTIONS`
+- `uri` (string): The URI to match against
+- `action` (function|string): Either a closure or a Controller string
 
 ## Extending the Router
 

@@ -49,4 +49,3 @@ Config::set('app.debug', false);
 Chances are, you're going to need to add your own config files at some point. All you need to do is create a new `.php` file in the `config/` directory, and have it return an array.
 
 This works because Lumberjack will look for all files in the `config/` directory that have a `.php` extension and automatically registers all the data to the application's config.
-

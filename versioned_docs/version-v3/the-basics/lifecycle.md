@@ -56,4 +56,3 @@ Lumberjack doesn't interfere with how WordPress handles the request or how it de
 
 `WordPressControllersServiceProvider` does however tweak the behaviour around _how_ the template is included. It hooks into `template_include` to check if the file has a controller class with the correct name. If it finds one, it calls the `handle()` method. Otherwise that file is treated as per normal.  
 This means that you don't have to use controllers if you don't want to.
-

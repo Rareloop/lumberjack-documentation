@@ -112,8 +112,8 @@ class Product extends Post
 
 Lumberjack will handle the registering of the post type for you. In order to do that, it requires 2 methods (documented above):
 
-* `getPostType()`
-* `getPostTypeConfig()`
+- `getPostType()`
+- `getPostTypeConfig()`
 
 In order for Lumberjack to register your post type, you need to add the class name to the `config/posttypes.php` config file.
 

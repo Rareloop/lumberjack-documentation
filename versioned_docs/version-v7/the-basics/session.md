@@ -18,6 +18,7 @@ If you're using the [global helpers](helpers#session), you can use the `session(
 ```php
 $value = session('key', 'default');
 ```
+
 :::
 
 ### Retrieving Data

@@ -36,8 +36,8 @@ class PageHomeController
 
 **The name of the controller is important:**
 
-* It should be under the namespace `App`.
-* The class name must be an UpperCamelCase version of the filename with the word `Controller` on the end (without spaces, dashes and underscores). If the controller name is not correctly Lumberjack will not throw any errors - instead you will just get a blank page.
+- It should be under the namespace `App`.
+- The class name must be an UpperCamelCase version of the filename with the word `Controller` on the end (without spaces, dashes and underscores). If the controller name is not correctly Lumberjack will not throw any errors - instead you will just get a blank page.
 
 The `handle` method will automatically be called on your controller.
 

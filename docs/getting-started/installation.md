@@ -6,8 +6,8 @@ sidebar_position: 1
 
 ## Requirements
 
-* PHP >=7.1
-* [Composer](https://getcomposer.org)
+- PHP >=7.1
+- [Composer](https://getcomposer.org)
 
 :::warning
 _Currently, using a child-theme to extend a Lumberjack theme is unsupported._
@@ -40,14 +40,14 @@ This will create a new folder `my-site` in the current working directory, instal
 To complete the install do the following:
 
 1. Edit the `.env` file and update environment variables:
-   * `DB_NAME` - Database name
-   * `DB_USER` - Database user
-   * `DB_PASSWORD` - Database password
-   * `DB_HOST` - Database host
-   * `WP_ENV` - Set to environment (`development`, `staging`, `production`)
-   * `WP_HOME` - Full URL to WordPress home (e.g. [http://example.com](http://example.com))
-   * `WP_SITEURL` - Full URL to WordPress including subdirectory (e.g. [http://example.com/wp](http://example.com/wp))
-   * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT` - Generate with [wp-cli-dotenv-command](https://github.com/aaemnnosttv/wp-cli-dotenv-command) or from the [Roots WordPress Salt Generator](https://cdn.roots.io/salts.html)
+   - `DB_NAME` - Database name
+   - `DB_USER` - Database user
+   - `DB_PASSWORD` - Database password
+   - `DB_HOST` - Database host
+   - `WP_ENV` - Set to environment (`development`, `staging`, `production`)
+   - `WP_HOME` - Full URL to WordPress home (e.g. [http://example.com](http://example.com))
+   - `WP_SITEURL` - Full URL to WordPress including subdirectory (e.g. [http://example.com/wp](http://example.com/wp))
+   - `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT` - Generate with [wp-cli-dotenv-command](https://github.com/aaemnnosttv/wp-cli-dotenv-command) or from the [Roots WordPress Salt Generator](https://cdn.roots.io/salts.html)
 2. Set your site vhost document root to `/path/to/my-site/web/`
 3. Access WP admin at `http://example.com/admin` and activate the Lumberjack theme.
 
@@ -83,10 +83,10 @@ Lumberjack can be added to an existing theme as long as Composer is being used a
    ```
 
 2. Copy the following directories from the [Lumberjack Starter Theme](https://github.com/Rareloop/lumberjack) into your theme:
-   * `app`
-   * `bootstrap`
-   * `config`
-   * `views`
+   - `app`
+   - `bootstrap`
+   - `config`
+   - `views`
 3. Create an empty `routes.php` file at the root of your theme directory.
 4. Add the following to the top of your `functions.php` file:
 

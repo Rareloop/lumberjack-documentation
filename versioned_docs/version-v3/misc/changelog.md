@@ -9,24 +9,24 @@ sidebar_position: 13
 
 ### Changed
 
-* Complete re-write!
+- Complete re-write!
 
 ## 2.0.0 (2016-12-07)
 
 ### Changed
 
-* Update to support Timber 1.1
+- Update to support Timber 1.1
 
 ### Fixed
 
-* Fix link to introduction article
+- Fix link to introduction article
 
 ## 1.0.1 (2015-12-10)
 
 ### Changed
 
-* Composer update
+- Composer update
 
 ## 1.0.0 (2015-12-08)
 
-* Initial Release
+- Initial Release
