@@ -389,12 +389,4 @@ And you could have the following named constructor:
 - `latestPosts($limit = 3)`- which knows how to get the latest _n_ posts.
 - `relatedPosts(Post $post)`- which knows how to get posts related to given post
 
-  :::
-
-## Using Hatchet
-
-If you are using [hatchet](https://github.com/Rareloop/hatchet) (Lumberjack's CLI), you can easily create view models with the following command:
-
-```bash
-php hatchet make:viewmodel TestimonialViewModel
-```
+:::
