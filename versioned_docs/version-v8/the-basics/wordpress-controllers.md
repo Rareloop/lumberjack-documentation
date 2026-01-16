@@ -91,7 +91,7 @@ It is recommended that you implement the Twig file in line with what Timber sugg
 
 :::info
 **Note:** If a `single-password.twig` file is **not found,** the middleware will fall back gracefully to the default behaviour, which is to **ignore the password functionality and render the page as normal**.
-:::info
+:::
 
 ### Changing the Twig file used for password protected pages
 
