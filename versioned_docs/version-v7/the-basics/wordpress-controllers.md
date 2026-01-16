@@ -18,16 +18,15 @@ In the files (i.e. controllers) that WordPress uses when it matches a route (e.g
 namespace App;
 
 use Timber\Timber;
-use Rareloop\Lumberjack\Post;
 use Rareloop\Lumberjack\Http\Responses\TimberResponse;
 
 class PageHomeController
 {
     public function handle()
     {
-        $context = Timber::get_context();
+        $context = Timber::context();
 
-        $context['post'] = new Post;
+        $context['post'] = Timber::get_post();
 
         return new TimberResponse('home', $context);
     }

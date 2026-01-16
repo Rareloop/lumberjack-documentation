@@ -9,18 +9,23 @@ sidebar_position: 4
 Typically in WordPress when you're querying posts you get [`WP_Post`](https://codex.wordpress.org/Class_Reference/WP_Post) objects back. Timber have taken this a step further and return a `Timber/Post` object instead. This [has a ton of great helper methods and properties](https://timber.github.io/docs/reference/timber-post/) which makes it easier and more expressive to use.
 
 ```php
-use Timber\Post;
-
-$post = new Post(1);
-$posts = Timber::get_posts($wpQueryArray);
+$post = Timber::get_post(1); // \Rareloop\Lumberjack\Post
+$posts = Timber::get_posts($wpQueryArray); // \Timber\PostQuery
 ```
 
-Lumberjack has its own Post object which makes it easier and more expressive to run queries.
+:::info Note on Timber v2
+Timber v2 deprecated direct instantiation in favour of the `Timber::get_post()` factory implementation. When you call `get_post()`, Timber uses the Class Map to return the correct class for that post.
+
+**Lumberjack automatically registers your custom post types with the Timber Class Map**
+
+See: [Timber: Class Maps](https://timber.github.io/docs/v2/guides/class-maps/#the-post-class-map)
+:::
+
+Lumberjack post types provide a static `query` method to make this simpler.
 
 ```php
 use Rareloop\Lumberjack\Post;
 
-$post = new Post(1);
 $collection = Post::query($wpQueryArray);
 ```
 
@@ -29,7 +34,6 @@ This becomes especially powerful when you start registering **Custom Post Types*
 ```php
 use App\PostTypes\Product;
 
-$post = new Product(1);
 $collection = Product::query($wpQueryArray);
 ```
 

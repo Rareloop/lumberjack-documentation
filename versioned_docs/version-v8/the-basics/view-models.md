@@ -23,8 +23,8 @@ class SingleController
 {
     public function handle()
     {
-        $context = Timber::get_context();
-        $post = new Post;
+        $context = Timber::context();
+        $post = Timber::get_post();
 
         $date = new \DateTime($post->post_date);
 
@@ -133,7 +133,6 @@ Now we can refactor our controller to use our view model instead:
 
 namespace App;
 
-use Rareloop\Lumberjack\Post;
 use Timber\Timber;
 use App\ViewModels\MediaCardViewModel;
 use Rareloop\Lumberjack\Http\Responses\TimberResponse;
@@ -142,8 +141,8 @@ class SingleController
 {
     public function handle()
     {
-        $context = Timber::get_context();
-        $post = new Post;
+        $context = Timber::context();
+        $post = Timber::get_post();
 
         $context['card'] = new MediaCardViewModel($post);
 
@@ -287,7 +286,6 @@ If your view model does not know about how to get data, then you will have to fe
 
 namespace App;
 
-use Rareloop\Lumberjack\Post;
 use Timber\Timber;
 use App\ViewModels\TestimonialViewModel;
 use Rareloop\Lumberjack\Http\Responses\TimberResponse;
@@ -296,8 +294,8 @@ class SingleController
 {
     public function handle()
     {
-        $context = Timber::get_context();
-        $post = new Post;
+        $context = Timber::context();
+        $post = Timber::get_post();
 
         // Get the data from somewhere, for example from ACF
         // You would have to duplicate these two lines in each controller
@@ -366,7 +364,6 @@ And we can now refactor our controller to use the named constructor like so:
 
 namespace App;
 
-use Rareloop\Lumberjack\Post;
 use Timber\Timber;
 use App\ViewModels\TestimonialViewModel;
 use Rareloop\Lumberjack\Http\Responses\TimberResponse;
@@ -375,8 +372,8 @@ class SingleController
 {
     public function handle()
     {
-        $context = Timber::get_context();
-        $post = new Post;
+        $context = Timber::context();
+        $post = Timber::get_post();
 
         $context['testimonial'] = TestimonialViewModel::forPost($post);
 
@@ -391,6 +388,7 @@ And you could have the following named constructor:
 
 - `latestPosts($limit = 3)`- which knows how to get the latest _n_ posts.
 - `relatedPosts(Post $post)`- which knows how to get posts related to given post
+
   :::
 
 ## Using Hatchet
