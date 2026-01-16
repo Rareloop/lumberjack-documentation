@@ -285,7 +285,7 @@ When using the query builder from a post type, the query is automatically scoped
 $jobs = Job::builder()->get();
 ```
 
-_Reference:_ [_WP_Query - Type Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters)\_\_
+_Reference:_ [_WP_Query - Type Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters)
 
 ### whereIdIn(array $ids)
 
@@ -297,7 +297,7 @@ Scope the query to only look for specific post IDs.
 
 Sets the `post__in` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)\_\_
+_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)
 
 ### whereIdNotIn(array $ids)
 
@@ -309,7 +309,7 @@ Scope the query to exclude specific post IDs.
 
 Sets the `post__not_in` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)\_\_
+_Reference:_ [_WP_Query - Post & Page Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters)
 
 ### whereStatus()
 
@@ -341,7 +341,7 @@ Scope the query to only include posts with the given status. By default WordPres
 
 Sets the `post_status` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Status Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters)\_\_
+_Reference:_ [_WP_Query - Status Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters)
 
 ### whereMeta($key, $value, $compare = '=', $type = null)
 
@@ -401,7 +401,7 @@ This will yield the following parameters:
 ]
 ```
 
-_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)\_\_
+_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)
 
 ### whereMetaRelationshipIs(string $relation)
 
@@ -436,7 +436,7 @@ This will yield the following parameters, adding the `'relation' => 'or'` to the
 ]
 ```
 
-_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)\_\_
+_Reference:_ [_WP_Query - Custom Field Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters)
 
 ### limit($limit)
 
@@ -448,7 +448,7 @@ Set the number of results to get back from the query.
 
 Sets the `posts_per_page` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)\_\_
+_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)
 
 ### offset($offset)
 
@@ -460,7 +460,7 @@ Set the number of results to displace or pass over.
 
 Sets the `offset` argument in `WP_Query`.
 
-_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)\_\_
+_Reference:_ [_WP_Query - Pagination Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters)
 
 ### orderBy($orderBy, $order = 'asc')
 
@@ -477,7 +477,7 @@ Sets the `orderby` and `order` arguments in `WP_Query`.
 $query->orderBy('title', 'asc');
 ```
 
-_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)\_\_
+_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)
 
 ### orderByMeta($metaKey, $order = 'asc', $type = null)
 
@@ -489,7 +489,7 @@ _Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.o
 
 Sets the `orderby` argument for `WP_Query` to `meta_value` when ordering strings, and `meta_value_num` when ordering numbers.
 
-_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)\_\_
+_Reference:_ [_WP_Query - Order & Orderby Parameters_](https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)
 
 ### as($postClass)
 
@@ -520,7 +520,7 @@ $events = Event::get();
 
 :::
 
-_Reference:_ [_Timber - get_posts()_](https://timber.github.io/docs/reference/timber/#get-posts)\_\_
+_Reference:_ [_Timber - get_posts()_](https://timber.github.io/docs/reference/timber/#get-posts)
 
 ### get()
 
