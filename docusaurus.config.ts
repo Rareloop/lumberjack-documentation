@@ -56,6 +56,16 @@ const config: Config = {
 
   trailingSlash: false,
 
+  headTags: [
+    {
+      tagName: "meta",
+      attributes: {
+        name: "algolia-site-verification",
+        content: "9F1C2561CA9C8EB5",
+      },
+    },
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
