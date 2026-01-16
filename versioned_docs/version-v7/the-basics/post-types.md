@@ -140,7 +140,7 @@ And that's it! You can now start using your new Custom Post Type.
 :::
 
 ```php
-$product = new Product;
+$product = Timber::get_post();
 
 // Bad
 echo get_field('price', $product->id);
