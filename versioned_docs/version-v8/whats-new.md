@@ -6,6 +6,59 @@ sidebar_position: 1
 
 # What's New
 
+## What's new in v8.0
+
+Lumberjack v8.0 is a major release that updates many core dependencies to provide full support for PHP 8.4.
+
+## Major Dependency Updates
+
+This release updates several critical components to their latest major versions:
+
+- PHP-DI: 6.x → 7.x
+- Monolog: 2.x → 3.x
+- Illuminate Collections: 8.x/9.x → 10.x
+- Laminas Diactoros: 2.x → 3.x
+- PSR Container/Log: 1.x → 2.x
+- Mindplay Middleman: 3.x → 4.x
+
+The [Upgrade Guide](./upgrade-guide.md#upgrading-from-v7-to-v8) details the required breaking changes.
+
+### Features
+
+#### New Exception Handling with Ignition
+
+Lumberjack has replaced the legacy Symfony Debug component with Spatie Ignition. This provides a much more robust and beautiful error reporting interface for developers.
+
+#### Facades moved into core
+
+`blast/facades` has been deprecated in favour of an internal facades implementation to provide PHP 8.4 support.
+
+#### Native Dcrypt Implementation
+
+`mmeyer2k/dcrypt` has been replaced by an internal version to provide PHP 8.4 support.
+
+## What's new in v7.0
+
+Lumberjack v7.0 introduces support for Timber v2. It also bumps the minimum PHP requirement to 8.1 and adds official support for PHP 8.3.
+
+### Features
+
+#### Automatic Post Class Mapping
+
+Lumberjack will now automatically add custom post types to the `timber/post/classmap` filter. This means Timber will always return the correct class when calling methods such as `Timber::get_post()`.
+
+#### Simplified Querying
+
+Because of the new automatic Class Mapping, the as() method has been removed from the QueryBuilder. Queries will now automatically return the correct Post subclass based on the WordPress Post Type.
+
+```php
+// Before (v6.x)
+$posts = MyPost::query()->as(MyPost::class)->get();
+
+// Now (v7.x)
+$posts = MyPost::query()->get();
+```
+
 ## What's new in v6.0
 
 Lumberjack v6.0 comes with PHP 8.1 support. It also replaced the (deprecated) [tightenco/collect](https://packagist.org/packages/tightenco/collect) package with [illuminate/collections](https://packagist.org/packages/illuminate/collections) package.
@@ -33,8 +86,6 @@ return [
 ## What's new in v4.3
 
 This release of Lumberjack is jam packed full of goodies. We have also added a whole lot more documentation, so grab a cuppa and make yourself comfy while we take you through all the changes.
-
-## What's new in v4.3
 
 ### Features
 
@@ -345,7 +396,7 @@ We've baked-in the [rareloop/lumberjack-querybuilder](https://github.com/Rareloo
 
 This is one of the bigger features added to v4. You can now manage sessions in a concise, expressive and headache-free way.
 
-Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](./the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_ ](./the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
+Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](./the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_](./the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
 
 ```php
 // Get a value, with a default value

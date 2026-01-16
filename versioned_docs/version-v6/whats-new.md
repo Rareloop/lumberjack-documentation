@@ -34,8 +34,6 @@ return [
 
 This release of Lumberjack is jam packed full of goodies. We have also added a whole lot more documentation, so grab a cuppa and make yourself comfy while we take you through all the changes.
 
-## What's new in v4.3
-
 ### Features
 
 #### Middleware Aliases on routes and controllers
@@ -345,7 +343,7 @@ We've baked-in the [rareloop/lumberjack-querybuilder](https://github.com/Rareloo
 
 This is one of the bigger features added to v4. You can now manage sessions in a concise, expressive and headache-free way.
 
-Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](./the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_ ](./the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
+Let's dive straight into what sessions look like in Lumberjack. We'll be using the [global helper function](./the-basics/helpers.md#session) `session()` for these examples; [_make sure you have enabled them_](./the-basics/helpers.md#adding-global-helpers)_if you want to use it too._
 
 ```php
 // Get a value, with a default value
