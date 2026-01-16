@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Requirements
 
-- PHP >=8.0
+- PHP >=7.3
 - [Composer](https://getcomposer.org)
 
 :::warning
