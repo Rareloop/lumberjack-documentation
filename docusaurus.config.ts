@@ -177,6 +177,12 @@ const config: Config = {
       ],
       copyright: `Copyright © 2015 - ${new Date().getFullYear()} Rareloop Limited. Built with Docusaurus.`,
     },
+    algolia: {
+      appId: "DIO9RXXZLB",
+      apiKey: "17e701c23a1c1361a59e20a915544594",
+      indexName: "Docusaurus",
+      insights: false,
+    },
     prism: {
       theme: prismThemes.vsLight,
       darkTheme: prismThemes.vsDark,
