@@ -6,6 +6,10 @@ sidebar_position: 1
 
 # What's New
 
+## What's new in v8.1
+
+Lumberjack v8.1 is a minor release that adds support for PHP 8.5 and allows configuration of the [Ignition error handler](https://github.com/spatie/ignition).
+
 ## What's new in v8.0
 
 Lumberjack v8.0 is a major release that updates many core dependencies to provide full support for PHP 8.4.

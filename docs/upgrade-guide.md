@@ -6,6 +6,206 @@ sidebar_position: 3
 
 # Upgrade Guide
 
+## Upgrading from v8 to v8.1
+
+Estimated time for upgrade: 30 minutes
+
+### Minimum PHP version increased to PHP 8.3
+
+:::warning
+**Likelihood of impact: High**
+:::
+
+As part of this upgrade, we have increased the minimum version of PHP we support to PHP 8.3.
+
+### PHP 8.5 Support
+
+With Lumberjack v8.1 comes support for PHP 8.5. Please note that WordPress still only has "beta support" for this version of PHP, which means that several plugins still output errors or deprecation warnings.
+
+Please carefully review your site to see if it's able to run PHP 8.5 and you will need to do your own migration to this version of PHP for your theme and upgrade any composer dependencies you are using where appropriate too.
+
+[PHP: Migrating from PHP 8.4.x to PHP 8.5.x - Manual](https://www.php.net/manual/en/migration84.php)
+
+### Configurable Ignition
+
+This version of Lumberjack provides configuration options for [Ignition](https://github.com/spatie/ignition). This feature is considered opt-in, and can be activated by creating `[theme]/config/ignition.php`.
+
+<details>
+    <summary>
+    Example Ignition Configuration
+    </summary>
+```php
+<?php
+
+use Spatie\Ignition\Solutions\SolutionProviders\BadMethodCallSolutionProvider;
+use Spatie\Ignition\Solutions\SolutionProviders\MergeConflictSolutionProvider;
+use Spatie\Ignition\Solutions\SolutionProviders\UndefinedPropertySolutionProvider;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Editor
+    |--------------------------------------------------------------------------
+    |
+    | Choose your preferred editor to use when clicking any edit button.
+    |
+    | Supported: "phpstorm", "vscode", "vscode-insiders", "textmate", "emacs",
+    |            "sublime", "atom", "nova", "macvim", "idea", "netbeans",
+    |            "xdebug", "phpstorm-remote"
+    |
+    */
+
+    'editor' => env('IGNITION_EDITOR', 'vscode'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Theme
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which theme Ignition should use.
+    |
+    | Supported: "light", "dark", "auto"
+    |
+    */
+
+    'theme' => env('IGNITION_THEME', 'auto'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Solution Providers
+    |--------------------------------------------------------------------------
+    |
+    | List of solution providers that should be loaded. You may specify additional
+    | providers as fully qualified class names.
+    |
+    */
+
+    'solution_providers' => [
+        // from spatie/ignition
+        BadMethodCallSolutionProvider::class,
+        MergeConflictSolutionProvider::class,
+        UndefinedPropertySolutionProvider::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Ignored Solution Providers
+    |--------------------------------------------------------------------------
+    |
+    | You may specify a list of solution providers (as fully qualified class
+    | names) that shouldn't be loaded. Ignition will ignore these classes
+    | and possible solutions provided by them will never be displayed.
+    |
+    */
+
+    'ignored_solution_providers' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Runnable Solutions
+    |--------------------------------------------------------------------------
+    |
+    | Some solutions that Ignition displays are runnable and can perform
+    | various tasks. By default, runnable solutions are only enabled when your
+    | app has debug mode enabled and the environment is `local` or
+    | `development`.
+    |
+    | Using the `IGNITION_ENABLE_RUNNABLE_SOLUTIONS` environment variable, you
+    | can override this behaviour and enable or disable runnable solutions
+    | regardless of the application's environment.
+    |
+    | Default: env('IGNITION_ENABLE_RUNNABLE_SOLUTIONS')
+    |
+    */
+
+    'enable_runnable_solutions' => env('IGNITION_ENABLE_RUNNABLE_SOLUTIONS', 'false'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Remote Path Mapping
+    |--------------------------------------------------------------------------
+    |
+    | If you are using a remote dev server, like Laravel Homestead, Docker, or
+    | even a remote VPS, it will be necessary to specify your path mapping.
+    |
+    | Leaving one, or both of these, empty or null will not trigger the remote
+    | URL changes and Ignition will treat your editor links as local files.
+    |
+    | "remote_sites_path" is an absolute base path for your sites or projects
+    | in Homestead, Vagrant, Docker, or another remote development server.
+    |
+    | Example value: "/home/vagrant/Code"
+    |
+    | "local_sites_path" is an absolute base path for your sites or projects
+    | on your local computer where your IDE or code editor is running on.
+    |
+    | Example values: "/Users/<name>/Code", "C:\Users\<name>\Documents\Code"
+    |
+    */
+
+    'remote_sites_path' => env('IGNITION_REMOTE_SITES_PATH', dirname(__DIR__)),
+    'local_sites_path' => env('IGNITION_LOCAL_SITES_PATH', ''),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Recorders
+    |--------------------------------------------------------------------------
+    |
+    | Ignition registers a couple of recorders when it is enabled. Below you may
+    | specify a recorders will be used to record specific events.
+    |
+    */
+
+    'recorders' => [],
+
+    /*
+     * When a key is set, we'll send your exceptions to Open AI to generate a solution
+     */
+
+    'open_ai_key' => env('IGNITION_OPEN_AI_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Include arguments
+    |--------------------------------------------------------------------------
+    |
+    | Ignition show you stack traces of exceptions with the arguments that were
+    | passed to each method. This feature can be disabled here.
+    |
+    */
+
+    'with_stack_frame_arguments' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Argument reducers
+    |--------------------------------------------------------------------------
+    |
+    | Ignition show you stack traces of exceptions with the arguments that were
+    | passed to each method. To make these variables more readable, you can
+    | specify a list of classes here which summarize the variables.
+    |
+    */
+
+    'argument_reducers' => [
+        \Spatie\Backtrace\Arguments\Reducers\BaseTypeArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\ArrayArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\StdClassArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\EnumArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\ClosureArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\DateTimeArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\DateTimeZoneArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\SymphonyRequestArgumentReducer::class,
+        \Spatie\Backtrace\Arguments\Reducers\StringableArgumentReducer::class,
+    ],
+
+];
+
+````
+
+</details>
+
 ## Upgrading from v7 to v8
 
 Estimated time for upgrade: 5 minutes
@@ -49,7 +249,7 @@ Any imports that **start with** `Zend\Diactoros` must be **re-written to** `Lami
 ```diff
 - use Zend\Diactoros\Response\JsonResponse;
 + use Laminas\Diactoros\Response\JsonResponse;
-```
+````
 
 #### blast/facades package added to core
 
