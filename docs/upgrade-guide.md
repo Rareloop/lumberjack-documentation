@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ## Upgrading from v8 to v8.1
 
-Estimated time for upgrade: 5 minutes
+Estimated time for upgrade: 30 minutes
 
 ### Minimum PHP version increased to PHP 8.3
 
