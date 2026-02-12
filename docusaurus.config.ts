@@ -182,6 +182,7 @@ const config: Config = {
       apiKey: "17e701c23a1c1361a59e20a915544594",
       indexName: "Docusaurus",
       insights: false,
+      contextualSearch: true,
     },
     prism: {
       theme: prismThemes.vsLight,
