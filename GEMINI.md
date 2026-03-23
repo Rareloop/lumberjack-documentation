@@ -6,12 +6,12 @@ The project is configured with TypeScript and includes a versioning system to ma
 
 ## Key Technologies
 
--   **Docusaurus:** Static site generator.
--   **React:** UI framework.
--   **TypeScript:** For type safety.
--   **Markdown (MDX):** For writing documentation content.
--   **GitHub Actions:** For CI/CD.
--   **Algolia:** For search functionality.
+- **Docusaurus:** Static site generator.
+- **React:** UI framework.
+- **TypeScript:** For type safety.
+- **Markdown (MDX):** For writing documentation content.
+- **GitHub Actions:** For CI/CD.
+- **Algolia:** For search functionality.
 
 ---
 
@@ -65,15 +65,15 @@ npm run typecheck
 
 All documentation content is written in Markdown (`.md` or `.mdx`) and is located in the following directories:
 
--   **`docs/`**: Contains the documentation for the *next* or *unreleased* version of Lumberjack.
--   **`versioned_docs/`**: Contains snapshots of the documentation for previous, tagged versions of Lumberjack (e.g., `version-v8`, `version-v7`).
+- **`docs/`**: Contains the documentation for the _next_ or _unreleased_ version of Lumberjack.
+- **`versioned_docs/`**: Contains snapshots of the documentation for previous, tagged versions of Lumberjack (e.g., `version-v8`, `version-v7`).
 
 ## Sidebars
 
 The navigation structure for the documentation is defined in these files:
 
--   **`sidebars.ts`**: Defines the sidebar for the *next* version.
--   **`versioned_sidebars/`**: Contains the sidebar configurations for each versioned documentation.
+- **`sidebars.ts`**: Defines the sidebar for the _next_ version.
+- **`versioned_sidebars/`**: Contains the sidebar configurations for each versioned documentation.
 
 ## Docusaurus Commands for Versioning and Maintenance
 
@@ -89,12 +89,12 @@ This will create a new versioned copy of the `docs/` and `sidebars.ts` files, ma
 
 Other useful `docusaurus` commands include:
 
-*   `npm run docusaurus deploy`: Deploys the site.
-*   `npm run docusaurus clear`: Clears the build cache.
-*   `npm run docusaurus serve`: Serves the built static site.
-*   `npm run docusaurus write-translations`: Extracts text for internationalization.
-*   `npm run docusaurus write-heading-ids`: Generates heading IDs for Markdown files.
-*   `npm run docusaurus swizzle`: Ejects and customizes Docusaurus components.
+- `npm run docusaurus deploy`: Deploys the site.
+- `npm run docusaurus clear`: Clears the build cache.
+- `npm run docusaurus serve`: Serves the built static site.
+- `npm run docusaurus write-translations`: Extracts text for internationalization.
+- `npm run docusaurus write-heading-ids`: Generates heading IDs for Markdown files.
+- `npm run docusaurus swizzle`: Ejects and customizes Docusaurus components.
 
 ---
 
