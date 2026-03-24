@@ -35,6 +35,8 @@ const config: Config = {
     locales: ["en"],
   },
 
+  plugins: ["@signalwire/docusaurus-plugin-llms-txt"],
+
   presets: [
     [
       "classic",
