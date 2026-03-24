@@ -46,6 +46,11 @@ const config: Config = {
           editUrl:
             "https://github.com/rareloop/lumberjack-documentation/tree/main/packages/create-docusaurus/templates/shared/",
           routeBasePath: "/",
+          versions: {
+            "v8.1": {
+              label: "v8.1 / v8.2",
+            },
+          },
         },
         theme: {
           customCss: "./src/css/custom.css",
