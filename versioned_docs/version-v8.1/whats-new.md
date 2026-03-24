@@ -10,6 +10,13 @@ sidebar_position: 1
 
 Lumberjack v8.1 is a minor release that adds support for PHP 8.5 and allows configuration of the [Ignition error handler](https://github.com/spatie/ignition).
 
+## What's new in v8.2
+
+Lumberjack v8.2 is a minor release with the following changes:
+
+- **Dedicated Response Emitter**: A new `ResponseEmitter` class has been introduced to safely handle responses, improving the reliability of Lumberjack. This is an internal change and should not affect your existing code.
+- **Additional Report-Only Error Levels**: `E_NOTICE` and `E_WARNING` have been added to the default report-only error levels. These errors will now be logged without crashing the application. For more details on configuring error reporting, refer to the [v6.0 release notes](#whats-new-in-v60).
+
 ## What's new in v8.0
 
 Lumberjack v8.0 is a major release that updates many core dependencies to provide full support for PHP 8.4.
