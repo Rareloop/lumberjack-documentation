@@ -12,9 +12,9 @@ Estimated time for upgrade: 1 minute
 
 Lumberjack v8.3 is a minor release with no breaking changes.
 
-This release introduces a new default error page for production environments and provides an easier way to configure Ignition.
+This release introduces a new default error page for production environments, provides an easier way to configure Ignition, and expands dependency injection support for WordPress controllers.
 
-For more information on the new error handling features, please refer to the [Error Handling](./the-basics/error-handling) documentation.
+See [Error Handling](./the-basics/error-handling) and [WordPress Controllers](./the-basics/wordpress-controllers.md#dependency-injection-in-wordpress-controllers).
 
 ## Upgrading from v8 to v8.1
 

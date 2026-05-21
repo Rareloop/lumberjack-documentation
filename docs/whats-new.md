@@ -12,6 +12,7 @@ Lumberjack v8.3 is a minor release that introduces a styled default error page f
 
 - **Production Error Page**: A clean, styled 'Lumberjack | status' fallback page is now displayed when debug mode is `false`, preventing blank white pages on errors.
 - **Easier Ignition Configuration**: A new `Ignition` facade and `IgnitionServiceProvider` have been introduced to allow for easier configuration of Ignition. You can now easily add solution providers or set themes from any service provider.
+- **Expanded dependency injection support for WordPress controllers**: New, streamlined, options to make controllers smaller, and more testable.
 
 ## What's new in v8.2
 

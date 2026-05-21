@@ -101,3 +101,49 @@ add_filter('lumberjack/password_protect_template', function() {
     return 'my-password-template.twig';
 });
 ```
+
+## Dependency Injection in WordPress Controllers
+
+:::info
+Available from v8.3.0, with full adoption in v9
+:::
+
+In newer versions of Lumberjack, we've introduced dependency injection typehints for your WordPress controllers - for example:
+
+```diff
+class PageHomeController
+{
+-   public function handle()
++   public function handle(TimberContext $context, Post $post)
+    {
+-       $context = Timber::context();
+-       $context['post'] = Timber::get_post();
++       $context->set('post', $post);
+
+        return new TimberResponse('home', $context);
+    }
+}
+```
+
+This makes controllers much leaner, but critically, much more testable by de-coupling them from Timber.
+
+### Available Typehints
+
+Any object bound in the [Container](../container/using-the-container.md) can be typehinted, for example, `Application $app` or `\Rareloop\Lumberjack\LoggerInterface`.
+
+For each Lumberjack type, there's full support for child classes. For example, injecting a custom post type will respect your Timber classmap.
+
+| Typehint                             | Description                     | Timber Equivalent     |
+| ------------------------------------ | ------------------------------- | --------------------- |
+| `\Rareloop\Lumberjack\TimberContext` | Get a Timber context singleton  | `Timber::context()`   |
+| `\Rareloop\Lumberjack\PostQuery`     | Get all the posts for the query | `Timber::get_posts()` |
+| `\Rareloop\Lumberjack\Post`          | Get the current Post object     | `Timber::get_post()`  |
+| `\Your\Custom\PostType`              | Get the current PostType        | `Timber::get_post()`  |
+| `\Rareloop\Lumberjack\Term`          | Get the current Term            | `Timber::get_term()`  |
+| `\Your\Custom\CategoryTerm`          | Get the current CategoryTerm    | `Timber::get_term()`  |
+| `\Rareloop\Lumberjack\User`          | Get the current User            | `Timber::get_user()`  |
+| `\Your\Custom\AdminUser`             | Get the current AdminUser       | `Timber::get_user()`  |
+
+:::note
+For each of Lumberjack's Proxy objects, the upstream Timber classes/interfaces are also supported. For example, typehinting `\Timber\PostQuery` will return an instance of that class.
+:::
